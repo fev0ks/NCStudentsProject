@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class ConnectorDB {
-
 
     private Connection connection;
 
@@ -20,14 +18,10 @@ public class ConnectorDB {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-
-
         }
     }
 
     Connection getConnection() {
         return connection;
     }
-
-
 }
