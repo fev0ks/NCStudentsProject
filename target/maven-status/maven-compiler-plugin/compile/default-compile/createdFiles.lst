@@ -1,1 +1,4 @@
-com\netcracker\students_project\MainServlet.class
+com\netcracker\students_project\Model\User.class
+com\netcracker\students_project\dataBase\ConnectorDB.class
+com\netcracker\students_project\dataBase\ManagerDB.class
+com\netcracker\students_project\Controller\MainServlet.class
