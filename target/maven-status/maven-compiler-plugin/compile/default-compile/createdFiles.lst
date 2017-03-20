@@ -1,4 +1,6 @@
-com\netcracker\students_project\Model\User.class
+com\netcracker\students_project\Controller\Main.class
+com\netcracker\students_project\Controller\Tratatata.class
 com\netcracker\students_project\dataBase\ConnectorDB.class
 com\netcracker\students_project\dataBase\ManagerDB.class
-com\netcracker\students_project\Controller\MainServlet.class
+com\netcracker\students_project\Model\Student.class
+com\netcracker\students_project\Controller\StudentController.class
