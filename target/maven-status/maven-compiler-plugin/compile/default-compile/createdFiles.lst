@@ -1,6 +1,8 @@
-com\netcracker\students_project\Controller\Main.class
-com\netcracker\students_project\Controller\Tratatata.class
 com\netcracker\students_project\dataBase\ConnectorDB.class
-com\netcracker\students_project\dataBase\ManagerDB.class
-com\netcracker\students_project\Model\Student.class
+com\netcracker\students_project\dao\StudentDAO.class
+com\netcracker\students_project\Service\TestDB.class
 com\netcracker\students_project\Controller\StudentController.class
+com\netcracker\students_project\dataBase\HibernateUtil.class
+com\netcracker\students_project\Controller\Main.class
+com\netcracker\students_project\entity\Student.class
+com\netcracker\students_project\dataBase\ManagerDB.class

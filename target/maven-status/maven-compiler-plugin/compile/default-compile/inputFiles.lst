@@ -1,6 +1,8 @@
 E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\Controller\StudentController.java
-E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\Controller\Tratatata.java
+E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\Service\TestDB.java
 E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\Controller\Main.java
-E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\Model\Student.java
+E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\entity\Student.java
+E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\dataBase\HibernateUtil.java
 E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\dataBase\ConnectorDB.java
+E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\dao\StudentDAO.java
 E:\YandexDisk\JavaProject\NCStudentsProject\src\main\java\com\netcracker\students_project\dataBase\ManagerDB.java

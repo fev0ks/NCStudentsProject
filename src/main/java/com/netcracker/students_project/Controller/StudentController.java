@@ -1,8 +1,8 @@
 package com.netcracker.students_project.Controller;
 
 
+import com.netcracker.students_project.dao.StudentDAO;
 import com.netcracker.students_project.entity.Student;
-import com.netcracker.students_project.dataBase.ManagerDB;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +23,12 @@ public class StudentController {
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
     public String addStudent(@ModelAttribute("mvc-dispatcher") Student student, ModelMap model) {
-        process(student);
+        StudentDAO studentDAO=new StudentDAO();
+        studentDAO.insertStudent(student);
+        student.setId(studentDAO.getStudentID(student));
+        System.out.println(student.toString());
+        showStudents(studentDAO.selectAllStudents());
+
         model.addAttribute("name", student.getName());
         model.addAttribute("age", student.getAge());
         model.addAttribute("pass", student.getPass());
@@ -32,15 +37,12 @@ public class StudentController {
         return "result";
     }
 
-    public void process(Student student)  {
-        ManagerDB managerDB=ManagerDB.getInstance();
-
-        managerDB.insertPeopleToDB(student);
-        student.setId(managerDB.getIdUser(student));
-        List<Student> hashMap=managerDB.getAllPeopleFromDB();
-        for (Student student1:hashMap) {
-            System.out.println(student1);
+    public void showStudents(List<Student> listStudent)  {
+        if(listStudent!=null && !listStudent.isEmpty()){
+            for (Student student : listStudent
+                    ) {
+                System.out.println(student);
+            }
         }
-        //return student;
     }
 }
