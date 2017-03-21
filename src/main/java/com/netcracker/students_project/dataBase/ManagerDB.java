@@ -1,7 +1,7 @@
 package com.netcracker.students_project.dataBase;
 
 
-import com.netcracker.students_project.Model.Student;
+import com.netcracker.students_project.entity.Student;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

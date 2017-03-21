@@ -1,7 +1,7 @@
 package com.netcracker.students_project.Controller;
 
 
-import com.netcracker.students_project.Model.Student;
+import com.netcracker.students_project.entity.Student;
 import com.netcracker.students_project.dataBase.ManagerDB;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,7 +40,6 @@ public class StudentController {
         List<Student> hashMap=managerDB.getAllPeopleFromDB();
         for (Student student1:hashMap) {
             System.out.println(student1);
-
         }
         //return student;
     }

@@ -1,39 +1,43 @@
-package com.netcracker.students_project.Model;
+package com.netcracker.students_project.entity;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
 
-@Component
+@Entity
+@Table(name = "test_tb")
 public class Student {
 
+    private int id;
     private String name;
     private int age;
-    private int id;
-    private int pass=0;
-       private int randomNumberForPass;
+    private int pass;
+
+    public Student() {
+        this.name = "";
+        this.age = 0;
+        this.pass = 123456;
+    }
 
     public Student(String name, int age) {
         this.name = name;
         this.age = age;
-        setRandomPass();
-        this.pass = randomNumberForPass;
     }
 
     public Student(String name, int age, int pass) {
         this.name = name;
         this.age = age;
-        setRandomPass();
-        this.pass=pass+randomNumberForPass;
+        this.pass = pass;
     }
-    private void setRandomPass(){
-        randomNumberForPass=(int)(Math.random()*123+1000);
+
+    public void setPass(int pass) {
+        this.pass = pass;
     }
-    public void setPass(int pass){
-        this.pass=pass+randomNumberForPass;
-    }
+
     public int getPass() {
         return pass;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public int getId() {
         return id;
     }
@@ -42,8 +46,6 @@ public class Student {
         this.id = id;
     }
 
-    public Student() {
-    }
 
     public String getName() {
         return name;
@@ -60,10 +62,11 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return String.format(
-                "User[id=%d, Name='%s', Age='%d']",
-                id, name, age);
+                "User[id=%d, Name='%s', Age='%d',Password='%d']",
+                id, name, age,pass);
     }
 }
