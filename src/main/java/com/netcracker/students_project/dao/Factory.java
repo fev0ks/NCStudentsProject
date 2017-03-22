@@ -3,15 +3,15 @@ package com.netcracker.students_project.dao;
 
 public class Factory {
     private static StudentDAO studentDAO = null;
-    private static AssignementEntityDao assignementEntityDao = null;
-    private static CommentsTaskEntityDao commentsTaskEntityDao = null;
-    private static RoleEntityDao roleEntityDao = null;
-    private static StepEntityDao stepEntityDao = null;
-    private static SubmissionEntityDao submissionEntityDao = null;
-    private static TaskEntityDao taskEntityDao = null;
-    private static TaskTegsEntityDao taskTegsEntityDao = null;
-    private static TegsEntityDao tegsEntityDao = null;
-    private static UserEntityDao userEntityDao = null;
+    private static AssignementDao assignementDao = null;
+    private static CommentsTaskDao commentsTaskEntityDao = null;
+    private static RoleDao roleDao = null;
+    private static StepDao stepDao = null;
+    private static SubmissionDao submissionDao = null;
+    private static TaskDao taskEntityDao = null;
+    private static TaskTegsDao taskTegsEntityDao = null;
+    private static TegsDao tegsEntityDao = null;
+    private static UserDao userEntityDao = null;
 
     private static Factory instance;
 
@@ -22,67 +22,67 @@ public class Factory {
         return instance;
     }
 
-    public AssignementEntityDao getAssignementEntityDao() {
-        if (assignementEntityDao == null) {
-            assignementEntityDao = new AssignementEntityDao();
+    public AssignementDao getAssignementDao() {
+        if (assignementDao == null) {
+            assignementDao = new AssignementDao();
         }
-        return assignementEntityDao;
+        return assignementDao;
     }
 
-    public CommentsTaskEntityDao getCommentsTaskEntityDao() {
+    public CommentsTaskDao getCommentsTaskDao() {
         if (commentsTaskEntityDao == null) {
-            commentsTaskEntityDao = new CommentsTaskEntityDao();
+            commentsTaskEntityDao = new CommentsTaskDao();
         }
         return commentsTaskEntityDao;
 
     }
 
-    public RoleEntityDao getRoleEntityDao() {
-        if (roleEntityDao == null) {
-            roleEntityDao = new RoleEntityDao();
+    public RoleDao getRoleDao() {
+        if (roleDao == null) {
+            roleDao = new RoleDao();
         }
-        return roleEntityDao;
+        return roleDao;
 
     }
 
-    public StepEntityDao getStepEntityDao() {
-        if (stepEntityDao == null) {
-            stepEntityDao = new StepEntityDao();
+    public StepDao getStepDao() {
+        if (stepDao == null) {
+            stepDao = new StepDao();
         }
-        return stepEntityDao;
+        return stepDao;
     }
 
-    public SubmissionEntityDao getSubmissionEntityDao() {
-        if (submissionEntityDao == null) {
-            submissionEntityDao = new SubmissionEntityDao();
+    public SubmissionDao getSubmissionDao() {
+        if (submissionDao == null) {
+            submissionDao = new SubmissionDao();
         }
-        return submissionEntityDao;
+        return submissionDao;
     }
 
-    public TaskEntityDao getTaskEntityDao() {
+    public TaskDao getTaskDao() {
         if (taskEntityDao == null) {
-            taskEntityDao = new TaskEntityDao();
+            taskEntityDao = new TaskDao();
         }
         return taskEntityDao;
     }
 
-    public TaskTegsEntityDao getTaskTegsEntityDao() {
+    public TaskTegsDao getTaskTegsDao() {
         if (taskTegsEntityDao == null) {
-            taskTegsEntityDao = new TaskTegsEntityDao();
+            taskTegsEntityDao = new TaskTegsDao();
         }
         return taskTegsEntityDao;
     }
 
-    public TegsEntityDao getTegsEntityDao() {
+    public TegsDao getTegsDao() {
         if (tegsEntityDao == null) {
-            tegsEntityDao = new TegsEntityDao();
+            tegsEntityDao = new TegsDao();
         }
         return tegsEntityDao;
     }
 
-    public UserEntityDao getUserEntityDao() {
+    public UserDao getUserDao() {
         if (userEntityDao == null) {
-            userEntityDao = new UserEntityDao();
+            userEntityDao = new UserDao();
         }
         return userEntityDao;
     }
