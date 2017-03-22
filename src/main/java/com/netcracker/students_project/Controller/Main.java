@@ -1,4 +1,4 @@
-package com.netcracker.students_project.Controller;
+package com.netcracker.students_project.controller;
 
 import com.netcracker.students_project.dao.StudentDAO;
 
