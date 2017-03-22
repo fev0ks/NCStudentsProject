@@ -2,7 +2,6 @@ package com.netcracker.students_project.Controller;
 
 
 import com.netcracker.students_project.Service.NameClass;
-import com.netcracker.students_project.entity.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
