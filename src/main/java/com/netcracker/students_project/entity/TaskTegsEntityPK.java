@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
 public class TaskTegsEntityPK implements Serializable {
     private long taskId;
     private int tegId;

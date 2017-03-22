@@ -15,7 +15,7 @@
         <mapping class="com.netcracker.students_project.entity.TaskEntity"/>
         <mapping class="com.netcracker.students_project.entity.TaskTegsEntity"/>
         <mapping class="com.netcracker.students_project.entity.TegEntity"/>
-        <mapping class="com.netcracker.students_project.entity.UserTbEntity"/>
+        <mapping class="com.netcracker.students_project.entity.UserEntity"/>
         <mapping class="com.netcracker.students_project.entity.StepEntity"/>
     </session-factory>
 </hibernate-configuration>

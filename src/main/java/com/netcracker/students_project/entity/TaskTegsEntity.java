@@ -2,11 +2,9 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
+
 @Entity
-@Table(name = "task_tegs", schema = "netcracker", catalog = "nc_students_project")
+@Table(name = "task_tegs", schema = "netcracker", catalog = "nc_student_project")
 @IdClass(TaskTegsEntityPK.class)
 public class TaskTegsEntity {
     private long taskId;

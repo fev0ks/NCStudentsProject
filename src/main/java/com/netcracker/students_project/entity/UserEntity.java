@@ -3,12 +3,9 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
 @Entity
-@Table(name = "user_tb", schema = "netcracker", catalog = "nc_students_project")
-public class UserTbEntity {
+@Table(name = "user_tb", schema = "netcracker", catalog = "nc_student_project")
+public class UserEntity {
     private long id;
     private String email;
     private String nickname;
@@ -81,7 +78,7 @@ public class UserTbEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserTbEntity that = (UserTbEntity) o;
+        UserEntity that = (UserEntity) o;
 
         if (id != that.id) return false;
         if (vkId != that.vkId) return false;

@@ -2,11 +2,9 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
+
 @Entity
-@Table(name = "submission", schema = "netcracker", catalog = "nc_students_project")
+@Table(name = "submission", schema = "netcracker", catalog = "nc_student_project")
 public class SubmissionEntity {
     private long id;
     private Boolean result;

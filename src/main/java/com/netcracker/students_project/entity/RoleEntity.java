@@ -2,11 +2,8 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
 @Entity
-@Table(name = "role", schema = "netcracker", catalog = "nc_students_project")
+@Table(name = "role", schema = "netcracker", catalog = "nc_student_project")
 public class RoleEntity {
     private int id;
     private String name;

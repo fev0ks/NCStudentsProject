@@ -3,11 +3,9 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
+
 @Entity
-@Table(name = "task", schema = "netcracker", catalog = "nc_students_project")
+@Table(name = "task", schema = "netcracker", catalog = "nc_student_project")
 public class TaskEntity {
     private long id;
     private String name;

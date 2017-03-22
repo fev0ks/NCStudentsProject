@@ -4,11 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
+
 @Entity
-@Table(name = "step", schema = "netcracker", catalog = "nc_students_project")
+@Table(name = "step", schema = "netcracker", catalog = "nc_student_project")
 public class StepEntity {
     private long id;
     private String name;

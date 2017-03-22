@@ -2,14 +2,15 @@ package com.netcracker.students_project.dao;
 
 import com.netcracker.students_project.dataBase.HibernateUtil;
 import org.hibernate.Session;
-
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by mixa1 on 21.03.2017.
- */
+
+@Deprecated
 public class StudentDAO {
-    @Transactional
+
     public String insertStudent(Student student) {
         try (Session session = HibernateUtil.getSession()) {
             session.beginTransaction();
