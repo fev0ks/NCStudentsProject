@@ -1,4 +1,4 @@
-package com.netcracker.students_project.Service;
+package com.netcracker.students_project.service;
 
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 

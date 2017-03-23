@@ -1,7 +1,7 @@
 package com.netcracker.students_project.controller;
 
 
-import com.netcracker.students_project.Service.NameClass;
+import com.netcracker.students_project.service.NameClass;
 import org.springframework.stereotype.Controller;
 
 @Controller

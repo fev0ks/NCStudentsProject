@@ -1,13 +1,9 @@
-package com.netcracker.students_project.Service;
+package com.netcracker.students_project.service;
 
 import com.netcracker.students_project.dao.Factory;
 import com.netcracker.students_project.entity.*;
-import com.netcracker.students_project.entity.exception.ExceptionDao;
 import org.hibernate.Session;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,37 +16,34 @@ public class TestDB {
     private UserEntity userMentor;
     private RoleEntity roleOwner;
     private RoleEntity roleMentor;
-
+    Session session = Factory.getInstance().getUserDao().session;
 
     public void createUserOwner() {
 
         userOwner = new UserEntity();
-        Session session = Factory.getInstance().getUserDao().session;
-
         session.getTransaction().begin();
-        userOwner.setId(4);
-        userOwner.setEmail("test4@gmail.com");
-        userOwner.setNickname("testUse42");
+        userOwner.setId(1);
+        userOwner.setEmail("test6@gmail.com");
+        userOwner.setNickname("testUs52");
         userOwner.setDtRegistration(new Date(1111, 11, 11));
-        userOwner.setVkId(4);
-        userOwner.setVkToken("4");
+        userOwner.setVkId(1);
+        userOwner.setVkToken("1");
         session.persist(userOwner);
         session.flush();
         session.getTransaction().commit();
     }
 
     public void createTask() {
+        session.getTransaction().begin();
         taskEntity = new TaskEntity();
         taskEntity.setId(1);
         taskEntity.setDtCreated(new Date(Calendar.getInstance().getTimeInMillis()));
         taskEntity.setDescription("Hello Test CreateTask");
         taskEntity.setName("test name task");
+        session.persist(taskEntity);
 
-        try {
-             Factory.getInstance().getTaskDao().create(taskEntity);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        session.flush();
+        session.getTransaction().commit();
     }
 
 
@@ -58,43 +51,41 @@ public class TestDB {
         roleOwner = new RoleEntity();
         roleOwner.setId(1);
         roleOwner.setName("owner");
+        session.getTransaction().begin();
 
-        try {
-             Factory.getInstance().getRoleDao().create(roleOwner);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        session.persist(roleOwner);
+
+        session.getTransaction().commit();
     }
 
 
     public void createAssignmentFirst() {
+        session.getTransaction().begin();
         AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
         assignmentEntityOwner.setUserId(userOwner.getId());
         assignmentEntityOwner.setTaskId(taskEntity.getId());
-        // assignmentEntityOwner.setRoleEntity(roleOwner);
+        //  assignmentEntityOwner.setRoleEntity(roleOwner);
         assignmentEntityOwner.setEmailNotification(true);
+        session.persist(assignmentEntityOwner);
 
-        try {
-             Factory.getInstance().getAssignmentDao().create(assignmentEntityOwner);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        session.getTransaction().commit();
     }
 
 
     public void createSteps() {
-
+        StepEntity stepEntity = new StepEntity();
         int i;
         for (i = 0; i < 3; i++) {
-            StepEntity stepEntity = new StepEntity();
+            session.getTransaction().begin();
+            //stepEntity  = new StepEntity();
             stepEntity.setName("step test" + i);
             stepEntity.setDescription("hello step");
-            File file = new File("resources/JustDoIT.jpg");
-            try {
-                stepEntity.setProofPhoto(Files.readAllBytes(file.toPath()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            File file = new File("resources/JustDoIT.jpg");
+//            try {
+//                stepEntity.setProofPhoto(Files.readAllBytes(file.toPath()));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             long timeInMillis = Calendar.getInstance().getTimeInMillis();
             long randomLong = Math.round((1 + Math.random()) * 259200000 * 5);
@@ -102,39 +93,33 @@ public class TestDB {
             stepEntity.setDeadline(new Date(timeInMillis));
             stepEntity.setDtFinished(new Date(timeInMillis + randomLong / 2));
             // stepEntity.setTaskEntity(taskEntity);
+            session.persist(stepEntity);
 
-            try {
-                 Factory.getInstance().getStepDao().create(stepEntity);
-            } catch (ExceptionDao exceptionDao) {
-                exceptionDao.printStackTrace();
-            }
+            session.flush();
+            session.getTransaction().commit();
         }
     }
 
     public void createTeg() {
+        session.getTransaction().begin();
         tegEntity = new TegEntity();
         tegEntity.setText("testTeg");
-
-        try {
-             Factory.getInstance().getTegDao().create(tegEntity);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        session.persist(tegEntity);
+        session.getTransaction().commit();
     }
 
     public void createTaskTeg() {
+        session.getTransaction().begin();
         TaskTegEntity taskTegEntity = new TaskTegEntity();
         //taskTegEntity.setTaskEntity(taskEntity);
         //taskTegEntity.setTegEntity(tegEntity);
+        session.persist(taskTegEntity);
 
-        try {
-             Factory.getInstance().getTaskTegsDao().create(taskTegEntity);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        session.getTransaction().commit();
     }
 
     public void createUserMentor() {
+        session.getTransaction().begin();
         userMentor = new UserEntity();
         userMentor.setId(2);
         userMentor.setEmail("mentor@gmail.com");
@@ -142,56 +127,61 @@ public class TestDB {
         userMentor.setDtRegistration(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         userMentor.setVkId(2);
         userMentor.setVkToken("2");
-
-        try {
-             Factory.getInstance().getUserDao().create(userMentor);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-
-        }
+        session.persist(userMentor);
+        session.getTransaction().commit();
 
     }
 
     public void createRoleMentor() {
+        session.getTransaction().begin();
         roleMentor = new RoleEntity();
         roleMentor.setId(2);
         roleMentor.setName("mentor");
+        session.persist(roleMentor);
 
-        try {
-            Factory.getInstance().getRoleDao().create(roleMentor);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-
-        }
+        session.getTransaction().commit();
 
     }
 
-    public void createAssignment() {
+    public void createAssignmentMentor() {
+        session.getTransaction().begin();
         AssignmentEntity assignmentEntity = new AssignmentEntity();
         assignmentEntity.setUserId(userMentor.getId());
         assignmentEntity.setTaskId(taskEntity.getId());
         //  assignmentEntity.setRoleEntity(roleMentor);
         assignmentEntity.setEmailNotification(true);
 
-        try {
-            Factory.getInstance().getAssignmentDao().create(assignmentEntity);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
+        session.persist(assignmentEntity);
 
-        }
+        session.getTransaction().commit();
 
     }
 
-    void createSubbmission() {
+  public void createSubbmission() {
+        session.getTransaction().begin();
         SubmissionEntity submissionEntity = new SubmissionEntity();
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
-        //   submissionEntity.setUserEntity(userMentor);
-        //  submissionEntity.setStepEntity(new StepEntity());
-        try {
-             Factory.getInstance().getSubmissionDao().create(submissionEntity);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-        }
+        submissionEntity.userEntity=userMentor;
+        session.persist(submissionEntity);
+        session.getTransaction().commit();
+        session.getTransaction().begin();
+
+        submissionEntity = new SubmissionEntity();
+        submissionEntity.setId(2);
+        submissionEntity.setResult(true);
+        submissionEntity.userEntity=userMentor;
+        session.persist(submissionEntity);
+        session.getTransaction().commit();
+
+        session.getTransaction().begin();
+        submissionEntity = new SubmissionEntity();
+        submissionEntity.setId(3);
+        submissionEntity.setResult(false);
+        submissionEntity.userEntity=userMentor;
+        session.persist(submissionEntity);
+        session.getTransaction().commit();
     }
+
+
 }
