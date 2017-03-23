@@ -13,12 +13,11 @@ public class CommentsTaskEntity {
     private Date dtCreated;
     private long task_id;
     private long user_id;
-
     private UserEntity userEntity;
     private TaskEntity taskEntity;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinTable(name = "user_id", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    @JoinColumn(name="user_id", referencedColumnName="id")
     public UserEntity getUserEntity() {
         return userEntity;
     }
@@ -28,7 +27,7 @@ public class CommentsTaskEntity {
     }
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinTable(name = "task_id", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    @JoinColumn(name="task_id", referencedColumnName="id")
     public TaskEntity getTaskEntity() {
         return taskEntity;
     }

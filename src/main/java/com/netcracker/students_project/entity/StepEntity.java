@@ -30,10 +30,6 @@ public class StepEntity {
         this.taskEntity = taskEntity;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e649f0522eb4b6b31fa5173614a4b7d36fb8529b
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")

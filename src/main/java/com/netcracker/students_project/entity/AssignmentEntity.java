@@ -12,22 +12,7 @@ public class AssignmentEntity {
     private long userId;
     private long taskId;
     private Boolean emailNotification;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
     private RoleEntity roleEntity;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="role_id", referencedColumnName="id")
-    public RoleEntity getRoleEntity() {
-        return roleEntity;
-    }
-
-    public void setRoleEntity(RoleEntity roleEntity) {
-        this.roleEntity = roleEntity;
-    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
