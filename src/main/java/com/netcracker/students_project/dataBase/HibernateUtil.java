@@ -10,15 +10,22 @@ public class HibernateUtil {
     private static final SessionFactory ourSessionFactory;
     static {
         try {
-            Configuration configuration = new Configuration();
-            configuration.configure("hibernate.cfg.xml");
-            ourSessionFactory = configuration.buildSessionFactory();
+            //Configuration configuration = new Configuration();
+           // configuration.configure("hibernate.cfg.xml");
+         //   ourSessionFactory = configuration.buildSessionFactory();
+            ourSessionFactory =  new Configuration().configure().buildSessionFactory();
+
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
+    public static SessionFactory getSessionF() throws HibernateException{
+        return ourSessionFactory;//ourSessionFactory.openSession();
+
+    }
     public static Session getSession() throws HibernateException{
-        return  ourSessionFactory.openSession();
+        return ourSessionFactory.openSession();
+
     }
 
 }

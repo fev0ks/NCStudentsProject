@@ -45,16 +45,16 @@ public class UserDao extends GenericDao<UserEntity> implements IUserDao{
 
     @Override
     public List<TaskEntity> findAllMentorTask() throws ExceptionDao {
-//        List<TaskEntity> tasksList = session.createQuery(
-//                "from TaskEntity role  " +
-//                        "JOIN UserEntity user " +
-//                        "on role.roleEntity.name= 'mentor' " +
-//                        "and role.userId=user.id")
-//                .list();
-//        for(TaskEntity p : tasksList){
-//            logger.info("UserEntity List::"+p);
-//        }
-        return null;
+        List<TaskEntity> tasksList = session.createQuery(
+                "from TaskEntity role  " +
+                        "JOIN UserEntity user " +
+                        "on role.roleEntity.name= 'mentor' " +
+                        "and role.userId=user.id")
+                .list();
+        for(TaskEntity p : tasksList){
+            logger.info("UserEntity List::"+p);
+        }
+        return tasksList;
     }
 
     @Override

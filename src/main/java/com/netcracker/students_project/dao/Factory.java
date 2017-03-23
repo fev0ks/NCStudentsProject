@@ -1,7 +1,7 @@
 package com.netcracker.students_project.dao;
 
 
-public class Factory {
+ public  class Factory {
     private static AssignmentDao assignmentDao = null;
     private static CommentsTaskDao commentsTaskEntityDao = null;
     private static RoleDao roleDao = null;
@@ -20,7 +20,9 @@ public class Factory {
         }
         return instance;
     }
+    private Factory(){
 
+    }
     public AssignmentDao getAssignmentDao() {
         if (assignmentDao == null) {
             assignmentDao = new AssignmentDao();
