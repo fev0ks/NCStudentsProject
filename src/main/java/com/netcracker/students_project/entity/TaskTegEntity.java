@@ -5,10 +5,32 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "task_tegs", schema = "netcracker", catalog = "nc_student_project")
-@IdClass(TaskTegsEntityPK.class)
-public class TaskTegsEntity {
+@IdClass(TaskTegEntityPK.class)
+public class TaskTegEntity {
     private long taskId;
     private int tegId;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private TaskEntity taskEntity;
+
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private TegEntity tegEntity;
+
+    public TegEntity getTegEntity() {
+        return tegEntity;
+    }
+
+    public void setTegEntity(TegEntity tegEntity) {
+        this.tegEntity = tegEntity;
+    }
 
     @Id
     @Column(name = "task_id")
@@ -35,7 +57,7 @@ public class TaskTegsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaskTegsEntity that = (TaskTegsEntity) o;
+        TaskTegEntity that = (TaskTegEntity) o;
 
         if (taskId != that.taskId) return false;
         if (tegId != that.tegId) return false;

@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class TaskTegsEntityPK implements Serializable {
+public class TaskTegEntityPK implements Serializable {
     private long taskId;
     private int tegId;
 
@@ -33,7 +33,7 @@ public class TaskTegsEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaskTegsEntityPK that = (TaskTegsEntityPK) o;
+        TaskTegEntityPK that = (TaskTegEntityPK) o;
 
         if (taskId != that.taskId) return false;
         if (tegId != that.tegId) return false;

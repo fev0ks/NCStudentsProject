@@ -2,6 +2,7 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 
 @Entity
@@ -11,6 +12,18 @@ public class TaskEntity {
     private String name;
     private String description;
     private Date dtCreated;
+
+    @OneToMany
+    @OrderBy("id")
+    private Set<StepEntity> stepsSet;
+
+    public Set<StepEntity> getStepsSet() {
+        return stepsSet;
+    }
+
+    public void setStepsSet(Set<StepEntity> stepsSet) {
+        this.stepsSet = stepsSet;
+    }
 
     @Id
     @Column(name = "id")

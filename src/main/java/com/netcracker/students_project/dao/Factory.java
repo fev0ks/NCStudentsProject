@@ -9,8 +9,8 @@ public class Factory {
     private static StepDao stepDao = null;
     private static SubmissionDao submissionDao = null;
     private static TaskDao taskEntityDao = null;
-    private static TaskTegsDao taskTegsEntityDao = null;
-    private static TegsDao tegsEntityDao = null;
+    private static TaskTegDao taskTegsEntityDao = null;
+    private static TegDao tegEntityDao = null;
     private static UserDao userEntityDao = null;
 
     private static Factory instance;
@@ -66,18 +66,18 @@ public class Factory {
         return taskEntityDao;
     }
 
-    public TaskTegsDao getTaskTegsDao() {
+    public TaskTegDao getTaskTegsDao() {
         if (taskTegsEntityDao == null) {
-            taskTegsEntityDao = new TaskTegsDao();
+            taskTegsEntityDao = new TaskTegDao();
         }
         return taskTegsEntityDao;
     }
 
-    public TegsDao getTegsDao() {
-        if (tegsEntityDao == null) {
-            tegsEntityDao = new TegsDao();
+    public TegDao getTegDao() {
+        if (tegEntityDao == null) {
+            tegEntityDao = new TegDao();
         }
-        return tegsEntityDao;
+        return tegEntityDao;
     }
 
     public UserDao getUserDao() {

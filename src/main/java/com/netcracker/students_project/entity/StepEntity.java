@@ -15,6 +15,16 @@ public class StepEntity {
     private Date dtFinished;
     private Date dtStarted;
     private byte[] proofPhoto;
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private TaskEntity taskEntity;
+
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
 
     @Id
     @Column(name = "id")
@@ -85,6 +95,7 @@ public class StepEntity {
     public void setProofPhoto(byte[] proofPhoto) {
         this.proofPhoto = proofPhoto;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,4 +1,4 @@
 package com.netcracker.students_project.dao;
 
-public class TaskTegsDao {
+public class TaskTegDao {
 }

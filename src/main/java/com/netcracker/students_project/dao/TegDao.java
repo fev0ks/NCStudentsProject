@@ -1,4 +1,4 @@
 package com.netcracker.students_project.dao;
 
-public class TegsDao {
+public class TegDao {
 }

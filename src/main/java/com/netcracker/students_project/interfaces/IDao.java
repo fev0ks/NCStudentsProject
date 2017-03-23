@@ -10,4 +10,5 @@ public interface IDao<T> {
         T create(T entity) throws ExceptionDao;
         void update(T entity) throws ExceptionDao;
         void delete(T entity) throws ExceptionDao;
+        String toString(T entity);
 }
