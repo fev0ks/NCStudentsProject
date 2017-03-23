@@ -8,10 +8,6 @@ import java.util.List;
 
 public class TaskDao extends GenericDao<TaskEntity> implements ITaskDao {
 
-    @Override
-    public String toString(TaskEntity entity) {
-        return null;
-    }
 
     @Override
     public List<UserEntity> findAllMentor() throws ExceptionDao {

@@ -2,6 +2,7 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user_tb", schema = "netcracker", catalog = "nc_student_project")
@@ -12,6 +13,30 @@ public class UserEntity {
     private Date dtRegistration;
     private long vkId;
     private String vkToken;
+
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<AssignmentEntity> userAssignmentList;
+
+    public List<AssignmentEntity> getUserAssignmentList() {
+        return userAssignmentList;
+    }
+
+    public void setUserAssignmentList(List<AssignmentEntity> userAssignmentList) {
+        this.userAssignmentList = userAssignmentList;
+    }
+    @OneToMany
+    @JoinColumn(name = "mentor_id")
+    private List<SubmissionEntity>  submissionEntityList;
+
+    public List<SubmissionEntity> getSubmissionEntityList() {
+        return submissionEntityList;
+    }
+
+    public void setSubmissionEntityList(List<SubmissionEntity> submissionEntityList) {
+        this.submissionEntityList = submissionEntityList;
+    }
 
     @Id
     @Column(name = "id")

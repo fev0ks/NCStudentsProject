@@ -206,7 +206,7 @@ public class CreateDaoTest {
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
         submissionEntity.setUserEntity(userMentor);
-        submissionEntity.setStepkEntity(new StepEntity());
+        submissionEntity.setStepEntity(new StepEntity());
         boolean compile=true;
         try {
             new Factory().getInstance().getSubmissionDao().create(submissionEntity);

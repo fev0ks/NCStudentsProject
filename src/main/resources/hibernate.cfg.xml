@@ -5,9 +5,10 @@
     <session-factory>
         <property name="connection.url">jdbc:postgresql://localhost:5433/nc_student_project</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">root</property>
         <property name="show_sql">true</property>
         <property name=" hibernate.hbm2.dll.auto">update</property>
-        <!--<mapping class="com.netcracker.students_project.entity.Student"/>-->
         <mapping class="com.netcracker.students_project.entity.AssignmentEntity"/>
         <mapping class="com.netcracker.students_project.entity.CommentsTaskEntity"/>
         <mapping class="com.netcracker.students_project.entity.RoleEntity"/>

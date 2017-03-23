@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 
 public class GenericDao<T> implements IDao<T>{
 
-    private Session session= HibernateUtil.getSession();
+    public Session session= HibernateUtil.getSession();
 
     @Override
     public T get(long id) throws ExceptionDao {

@@ -21,13 +21,14 @@ public class SubmissionEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinTable(name = "step", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
     private StepEntity stepEntity;
 
     public StepEntity getStepEntity() {
         return stepEntity;
     }
 
-    public void setStepkEntity(StepEntity stepkEntity) {
+    public void setStepEntity(StepEntity stepkEntity) {
         this.stepEntity = stepEntity;
     }
 
