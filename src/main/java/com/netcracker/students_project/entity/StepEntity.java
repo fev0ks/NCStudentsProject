@@ -3,7 +3,6 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
-import java.util.Set;
 
 
 @Entity
@@ -27,10 +26,7 @@ public class StepEntity {
     public void setTaskEntity(TaskEntity taskEntity) {
         this.taskEntity = taskEntity;
     }
-
-    @ManyToMany
-    public Set<SubmissionEntity> submissionEntity;
-
+    
     @Id
     @Column(name = "id")
     public long getId() {
