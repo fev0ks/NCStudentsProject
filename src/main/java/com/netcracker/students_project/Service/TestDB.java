@@ -28,20 +28,16 @@ public class TestDB {
         Session session = Factory.getInstance().getUserDao().session;
 
         session.getTransaction().begin();
-        userOwner.setId(2);
-        userOwner.setEmail("test2@gmail.com");
-        userOwner.setNickname("testUser2");
+        userOwner.setId(4);
+        userOwner.setEmail("test4@gmail.com");
+        userOwner.setNickname("testUse42");
         userOwner.setDtRegistration(new Date(1111, 11, 11));
-        userOwner.setVkId(2);
-        userOwner.setVkToken("2");
+        userOwner.setVkId(4);
+        userOwner.setVkToken("4");
         session.persist(userOwner);
-
-        System.out.println(userOwner.toString());
         session.flush();
         session.getTransaction().commit();
-
     }
-
 
     public void createTask() {
         taskEntity = new TaskEntity();
