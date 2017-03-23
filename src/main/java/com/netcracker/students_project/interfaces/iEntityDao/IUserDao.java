@@ -9,7 +9,7 @@ import com.netcracker.students_project.interfaces.IDao;
 
 import java.util.List;
 
-interface IUserDao extends IDao<UserDao> {
+public interface IUserDao extends IDao<UserDao> {
     List<UserDao> findAllUsers() throws ExceptionDao;
     List<TaskEntity>  findAllTask() throws ExceptionDao;
     List<TaskEntity>  findAllFinishedTask() throws ExceptionDao;

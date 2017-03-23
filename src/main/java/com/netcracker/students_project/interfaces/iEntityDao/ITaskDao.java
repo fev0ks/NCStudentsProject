@@ -10,7 +10,7 @@ import com.netcracker.students_project.interfaces.IDao;
 
 import java.util.List;
 
-interface ITaskDao extends IDao<TaskDao> {
+public interface ITaskDao extends IDao<TaskDao> {
     List<UserEntity> findAllMentor() throws ExceptionDao;
     List<StepEntity> findAllStep() throws ExceptionDao;
     List<CommentsTaskEntity> findAllComment() throws ExceptionDao;

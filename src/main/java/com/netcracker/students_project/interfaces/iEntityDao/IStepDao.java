@@ -7,7 +7,7 @@ import com.netcracker.students_project.interfaces.IDao;
 
 import java.util.List;
 
-interface IStepDao extends IDao<StepDao> {
+public interface IStepDao extends IDao<StepDao> {
     List<UserEntity> findAllCheckedMentor() throws ExceptionDao;
     List<UserEntity> findAllUnCheckedMentor() throws ExceptionDao;
 }
