@@ -3,7 +3,7 @@ package com.netcracker.students_project.dao;
 
 public class Factory {
     private static StudentDAO studentDAO = null;
-    private static AssignementDao assignementDao = null;
+    private static AssignmentDao assignmentDao = null;
     private static CommentsTaskDao commentsTaskEntityDao = null;
     private static RoleDao roleDao = null;
     private static StepDao stepDao = null;
@@ -22,11 +22,11 @@ public class Factory {
         return instance;
     }
 
-    public AssignementDao getAssignementDao() {
-        if (assignementDao == null) {
-            assignementDao = new AssignementDao();
+    public AssignmentDao getAssignmentDao() {
+        if (assignmentDao == null) {
+            assignmentDao = new AssignmentDao();
         }
-        return assignementDao;
+        return assignmentDao;
     }
 
     public CommentsTaskDao getCommentsTaskDao() {
