@@ -26,7 +26,7 @@ public class StepEntity {
     public void setTaskEntity(TaskEntity taskEntity) {
         this.taskEntity = taskEntity;
     }
-    
+
     @Id
     @Column(name = "id")
     public long getId() {
