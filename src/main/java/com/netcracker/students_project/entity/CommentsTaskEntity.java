@@ -77,6 +77,17 @@ public class CommentsTaskEntity {
     }
 
     @Override
+    public String toString() {
+        return "CommentsTaskEntity{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", dtCreated=" + dtCreated +
+                ", user_id=" + userEntity.getId() +
+                ", task_id=" + taskEntity.getId() +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (text != null ? text.hashCode() : 0);

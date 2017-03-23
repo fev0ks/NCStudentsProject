@@ -42,6 +42,14 @@ public class TegEntity {
     }
 
     @Override
+    public String toString() {
+        return "TegEntity{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (text != null ? text.hashCode() : 0);

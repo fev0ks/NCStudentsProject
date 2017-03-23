@@ -74,6 +74,18 @@ public class UserEntity {
     }
 
     @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", dtRegistration=" + dtRegistration +
+                ", vkId=" + vkId +
+                ", vkToken='" + vkToken + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

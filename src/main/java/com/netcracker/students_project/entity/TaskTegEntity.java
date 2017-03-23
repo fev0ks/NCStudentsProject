@@ -66,6 +66,16 @@ public class TaskTegEntity {
     }
 
     @Override
+    public String toString() {
+        return "TaskTegEntity{" +
+                "taskId=" + taskId +
+                ", tegId=" + tegId +
+                ", task_id=" + taskEntity.getId() +
+                ", teg_text=" + tegEntity.getText() +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = (int) (taskId ^ (taskId >>> 32));
         result = 31 * result + tegId;

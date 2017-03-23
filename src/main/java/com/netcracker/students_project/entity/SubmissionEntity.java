@@ -65,6 +65,16 @@ public class SubmissionEntity {
     }
 
     @Override
+    public String toString() {
+        return "SubmissionEntity{" +
+                "id=" + id +
+                ", result=" + result +
+                ", user_id=" + userEntity.getId() +
+                ", step_id=" + stepEntity.getId() +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result1 = (int) (id ^ (id >>> 32));
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);

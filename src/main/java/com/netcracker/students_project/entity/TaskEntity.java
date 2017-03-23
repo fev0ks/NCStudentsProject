@@ -81,6 +81,17 @@ public class TaskEntity {
     }
 
     @Override
+    public String toString() {
+        return "TaskEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", dtCreated=" + dtCreated +
+                ", count steps=" + stepsSet.size() +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
