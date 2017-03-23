@@ -20,11 +20,7 @@ public class StepEntity {
     private byte[] proofPhoto;
     private TaskEntity taskEntity;
 
-<<<<<<< HEAD
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    //@JoinColumn
-    public TaskEntity taskEntity;
-=======
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="task_id", referencedColumnName="id")
     public TaskEntity getTaskEntity() {
@@ -34,11 +30,7 @@ public class StepEntity {
     public void setTaskEntity(TaskEntity taskEntity) {
         this.taskEntity = taskEntity;
     }
->>>>>>> origin/master
 
-    @ManyToMany
-    @JoinTable
-    public Set<SubmissionEntity> submissionEntity;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
