@@ -21,14 +21,14 @@ public class SubmissionEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private TaskEntity taskEntity;
+    private StepEntity stepEntity;
 
-    public TaskEntity getTaskEntity() {
-        return taskEntity;
+    public StepEntity getStepEntity() {
+        return stepEntity;
     }
 
-    public void setTaskEntity(TaskEntity taskEntity) {
-        this.taskEntity = taskEntity;
+    public void setStepkEntity(StepEntity stepkEntity) {
+        this.stepEntity = stepEntity;
     }
 
     @Id
