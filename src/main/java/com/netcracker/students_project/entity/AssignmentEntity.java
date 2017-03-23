@@ -15,13 +15,13 @@ public class AssignmentEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private RoleEntity roleEntity;
 
-    public RoleEntity getRoleEntity() {
-        return roleEntity;
-    }
-
-    public void setRoleEntity(RoleEntity roleEntity) {
-        this.roleEntity = roleEntity;
-    }
+//    public RoleEntity getRoleEntity() {
+//        return roleEntity;
+//    }
+//
+//    public void setRoleEntity(RoleEntity roleEntity) {
+//        this.roleEntity = roleEntity;
+//    }
 
     @Id
     @Column(name = "user_id")

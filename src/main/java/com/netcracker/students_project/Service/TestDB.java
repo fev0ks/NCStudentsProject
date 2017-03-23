@@ -37,6 +37,7 @@ public class TestDB {
             exceptionDao.printStackTrace();
             compile = false;
         }
+        System.out.println(userOwner.toString());
     }
 
 
@@ -72,7 +73,7 @@ public class TestDB {
         AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
         assignmentEntityOwner.setUserId(userOwner.getId());
         assignmentEntityOwner.setTaskId(taskEntity.getId());
-        assignmentEntityOwner.setRoleEntity(roleOwner);
+       // assignmentEntityOwner.setRoleEntity(roleOwner);
         assignmentEntityOwner.setEmailNotification(true);
 
         try {
@@ -102,7 +103,7 @@ public class TestDB {
             stepEntity.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
             stepEntity.setDeadline(new Date(timeInMillis));
             stepEntity.setDtFinished(new Date(timeInMillis + randomLong / 2));
-            stepEntity.setTaskEntity(taskEntity);
+           // stepEntity.setTaskEntity(taskEntity);
 
             try {
                 new Factory().getInstance().getStepDao().create(stepEntity);
@@ -125,8 +126,8 @@ public class TestDB {
 
     public void createTaskTeg() {
         TaskTegEntity taskTegEntity = new TaskTegEntity();
-        taskTegEntity.setTaskEntity(taskEntity);
-        taskTegEntity.setTegEntity(tegEntity);
+        //taskTegEntity.setTaskEntity(taskEntity);
+        //taskTegEntity.setTegEntity(tegEntity);
 
         try {
             new Factory().getInstance().getTaskTegsDao().create(taskTegEntity);
@@ -171,7 +172,7 @@ public class TestDB {
         AssignmentEntity assignmentEntity = new AssignmentEntity();
         assignmentEntity.setUserId(userMentor.getId());
         assignmentEntity.setTaskId(taskEntity.getId());
-        assignmentEntity.setRoleEntity(roleMentor);
+      //  assignmentEntity.setRoleEntity(roleMentor);
         assignmentEntity.setEmailNotification(true);
 
         try {
@@ -187,8 +188,8 @@ public class TestDB {
         SubmissionEntity submissionEntity = new SubmissionEntity();
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
-        submissionEntity.setUserEntity(userMentor);
-        submissionEntity.setStepEntity(new StepEntity());
+     //   submissionEntity.setUserEntity(userMentor);
+      //  submissionEntity.setStepEntity(new StepEntity());
         try {
             new Factory().getInstance().getSubmissionDao().create(submissionEntity);
         } catch (ExceptionDao exceptionDao) {

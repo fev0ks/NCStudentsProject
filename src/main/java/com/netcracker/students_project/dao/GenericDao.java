@@ -21,7 +21,7 @@ public class GenericDao<T> implements IDao<T>{
 
     @Override
     public T create(T entity) throws ExceptionDao {
-        this.session.persist(entity);
+        this.session.save(entity);
         return entity;
     }
 

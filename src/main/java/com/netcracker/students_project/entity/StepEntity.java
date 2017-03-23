@@ -19,23 +19,23 @@ public class StepEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TaskEntity taskEntity;
 
-    public TaskEntity getTaskEntity() {
-        return taskEntity;
-    }
-
-    public void setTaskEntity(TaskEntity taskEntity) {
-        this.taskEntity = taskEntity;
-    }
+//    public TaskEntity getTaskEntity() {
+//        return taskEntity;
+//    }
+//
+//    public void setTaskEntity(TaskEntity taskEntity) {
+//        this.taskEntity = taskEntity;
+//    }
     @ManyToMany
     private List<SubmissionEntity> submissionEntity;
 
-    public List<SubmissionEntity> getSubmissionEntity() {
-        return submissionEntity;
-    }
-
-    public void setSubmissionEntity(List<SubmissionEntity> submissionEntity) {
-        this.submissionEntity = submissionEntity;
-    }
+//    public List<SubmissionEntity> getSubmissionEntity() {
+//        return submissionEntity;
+//    }
+//
+//    public void setSubmissionEntity(List<SubmissionEntity> submissionEntity) {
+//        this.submissionEntity = submissionEntity;
+//    }
 
     @Id
     @Column(name = "id")
