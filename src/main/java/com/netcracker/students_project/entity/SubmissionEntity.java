@@ -9,10 +9,7 @@ public class SubmissionEntity {
     private long id;
     private Boolean result;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, targetEntity = StepEntity.class)
-    @JoinTable(name = "step", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
     public StepEntity stepEntity;
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     public UserEntity userEntity;
     @Id
     @Column(name = "id")

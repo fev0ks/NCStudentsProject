@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.util.Arrays;
 import java.util.Set;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "step", schema = "netcracker", catalog = "nc_student_project")
@@ -18,12 +20,15 @@ public class StepEntity {
     private byte[] proofPhoto;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    //@JoinColumn
     public TaskEntity taskEntity;
 
     @ManyToMany
+    @JoinTable
     public Set<SubmissionEntity> submissionEntity;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;

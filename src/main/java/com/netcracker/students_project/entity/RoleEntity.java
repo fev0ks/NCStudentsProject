@@ -2,6 +2,8 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @Table(name = "role", schema = "netcracker", catalog = "nc_student_project")
 public class RoleEntity {
@@ -9,6 +11,7 @@ public class RoleEntity {
     private String name;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;

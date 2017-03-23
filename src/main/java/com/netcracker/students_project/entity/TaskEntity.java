@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "task", schema = "netcracker", catalog = "nc_student_project")
@@ -18,6 +20,7 @@ public class TaskEntity {
     private Set<StepEntity> stepsSet;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;

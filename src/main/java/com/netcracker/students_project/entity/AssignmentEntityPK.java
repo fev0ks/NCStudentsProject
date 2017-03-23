@@ -1,8 +1,11 @@
 package com.netcracker.students_project.entity;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 
 public class AssignmentEntityPK implements Serializable {
@@ -10,6 +13,7 @@ public class AssignmentEntityPK implements Serializable {
     private long taskId;
 
     @Column(name = "user_id")
+    @GeneratedValue(strategy = IDENTITY)
     @Id
     public long getUserId() {
         return userId;
@@ -20,6 +24,7 @@ public class AssignmentEntityPK implements Serializable {
     }
 
     @Column(name = "task_id")
+    @GeneratedValue(strategy = IDENTITY)
     @Id
     public long getTaskId() {
         return taskId;

@@ -2,6 +2,8 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "assignment", schema = "netcracker", catalog = "nc_student_project")
@@ -12,10 +14,20 @@ public class AssignmentEntity {
     private Boolean emailNotification;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private RoleEntity roleEntity;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="role_id", referencedColumnName="id")
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "user_id")
     public long getUserId() {
         return userId;
@@ -26,6 +38,7 @@ public class AssignmentEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "task_id")
     public long getTaskId() {
         return taskId;
