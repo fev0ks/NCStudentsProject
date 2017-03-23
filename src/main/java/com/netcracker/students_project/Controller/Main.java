@@ -25,6 +25,5 @@ public class Main {
         testDB.createRoleMentor();
         testDB.createAssignmentMentor();
         testDB.createSubbmission();
-
     }
 }
