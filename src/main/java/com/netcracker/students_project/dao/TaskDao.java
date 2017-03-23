@@ -1,4 +1,6 @@
 package com.netcracker.students_project.dao;
 
-public class TaskDao {
+import com.netcracker.students_project.entity.TaskEntity;
+
+public class TaskDao implements ITaskDao<TaskEntity> {
 }

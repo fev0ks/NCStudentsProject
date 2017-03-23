@@ -15,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //вообще по идее это надо запихать в один метод под общую транзакцию
 public class CreateDaoTest {
-    UserEntity userOwner;
-    TaskEntity taskEntity;
-    TegEntity tegEntity;
-    UserEntity userMentor;
-    RoleEntity roleOwner;
-    RoleEntity roleMentor;
+  private  UserEntity userOwner;
+    private TaskEntity taskEntity;
+    private TegEntity tegEntity;
+    private UserEntity userMentor;
+    private RoleEntity roleOwner;
+    private RoleEntity roleMentor;
 
     @Test
     public void createUserOwner(){
@@ -55,9 +55,9 @@ public class CreateDaoTest {
     @Test
     public void createAssignmentFirst(){
         AssignmentEntity assignmentEntityFirst=new AssignmentEntity();
-        assignmentEntityFirst.setUserId(userMentor.getId());
+        assignmentEntityFirst.setUserId(userOwner.getId());
         assignmentEntityFirst.setTaskId(taskEntity.getId());
-        assignmentEntityFirst.setRoleEntity(roleMentor);
+        assignmentEntityFirst.setRoleEntity(roleOwner);
         assignmentEntityFirst.setEmailNotification(true);
         assertTrue(new Factory().getInstance().getRoleDao().create(assignmentEntityFirst));
     }
