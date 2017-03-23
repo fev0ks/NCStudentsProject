@@ -13,24 +13,8 @@ public class CommentsTaskEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private UserEntity userEntity;
 
-//    public UserEntity getUserEntity() {
-//        return userEntity;
-//    }
-//
-//    public void setUserEntity(UserEntity userEntity) {
-//        this.userEntity = userEntity;
-//    }
-
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TaskEntity taskEntity;
-
-//    public TaskEntity getTaskEntity() {
-//        return taskEntity;
-//    }
-//
-//    public void setTaskEntity(TaskEntity taskEntity) {
-//        this.taskEntity = taskEntity;
-//    }
 
     @Id
     @Column(name = "id")

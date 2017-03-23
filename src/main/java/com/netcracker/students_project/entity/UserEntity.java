@@ -78,25 +78,9 @@ public class UserEntity {
     @JoinColumn(name = "user_id")
     private List<AssignmentEntity> userAssignmentList;
 
-//    public List<AssignmentEntity> getUserAssignmentList() {
-//        return userAssignmentList;
-//    }
-//
-//    public void setUserAssignmentList(List<AssignmentEntity> userAssignmentList) {
-//        this.userAssignmentList = userAssignmentList;
-//    }
-
     @OneToMany
     @JoinColumn(name = "mentor_id")
     private List<SubmissionEntity>  submissionEntityList;
-
-//    public List<SubmissionEntity> getSubmissionEntityList() {
-//        return submissionEntityList;
-//    }
-//
-//    public void setSubmissionEntityList(List<SubmissionEntity> submissionEntityList) {
-//        this.submissionEntityList = submissionEntityList;
-//    }
 
     @Override
     public String toString() {

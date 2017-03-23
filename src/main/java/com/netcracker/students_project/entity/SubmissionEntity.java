@@ -9,29 +9,11 @@ public class SubmissionEntity {
     private long id;
     private Boolean result;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-//    private UserEntity userEntity;
-//
-//    public UserEntity getUserEntity() {
-//        return userEntity;
-//    }
-//
-//    public void setUserEntity(UserEntity userEntity) {
-//        this.userEntity = userEntity;
-//    }
-//
-//    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, targetEntity = StepEntity.class)
-//    @JoinTable(name = "step", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-//    private StepEntity stepEntity;
-//
-//    public StepEntity getStepEntity() {
-//        return stepEntity;
-//    }
-//
-//    public void setStepEntity(StepEntity stepkEntity) {
-//        this.stepEntity = stepEntity;
-//    }
-
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, targetEntity = StepEntity.class)
+    @JoinTable(name = "step", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    public StepEntity stepEntity;
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    public UserEntity userEntity;
     @Id
     @Column(name = "id")
     public long getId() {

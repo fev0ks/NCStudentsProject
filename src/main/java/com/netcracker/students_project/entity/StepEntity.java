@@ -3,7 +3,7 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -16,26 +16,12 @@ public class StepEntity {
     private Date dtFinished;
     private Date dtStarted;
     private byte[] proofPhoto;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private TaskEntity taskEntity;
+    public TaskEntity taskEntity;
 
-//    public TaskEntity getTaskEntity() {
-//        return taskEntity;
-//    }
-//
-//    public void setTaskEntity(TaskEntity taskEntity) {
-//        this.taskEntity = taskEntity;
-//    }
     @ManyToMany
-    private List<SubmissionEntity> submissionEntity;
-
-//    public List<SubmissionEntity> getSubmissionEntity() {
-//        return submissionEntity;
-//    }
-//
-//    public void setSubmissionEntity(List<SubmissionEntity> submissionEntity) {
-//        this.submissionEntity = submissionEntity;
-//    }
+    public Set<SubmissionEntity> submissionEntity;
 
     @Id
     @Column(name = "id")

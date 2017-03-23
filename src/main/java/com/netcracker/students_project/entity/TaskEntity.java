@@ -17,14 +17,6 @@ public class TaskEntity {
     @OrderBy("id")
     private Set<StepEntity> stepsSet;
 
-//    public Set<StepEntity> getStepsSet() {
-//        return stepsSet;
-//    }
-//
-//    public void setStepsSet(Set<StepEntity> stepsSet) {
-//        this.stepsSet = stepsSet;
-//    }
-
     @Id
     @Column(name = "id")
     public long getId() {

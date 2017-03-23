@@ -13,24 +13,8 @@ public class TaskTegEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TaskEntity taskEntity;
 
-//    public TaskEntity getTaskEntity() {
-//        return taskEntity;
-//    }
-//
-//    public void setTaskEntity(TaskEntity taskEntity) {
-//        this.taskEntity = taskEntity;
-//    }
-
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TegEntity tegEntity;
-
-//    public TegEntity getTegEntity() {
-//        return tegEntity;
-//    }
-//
-//    public void setTegEntity(TegEntity tegEntity) {
-//        this.tegEntity = tegEntity;
-//    }
 
     @Id
     @Column(name = "task_id")
