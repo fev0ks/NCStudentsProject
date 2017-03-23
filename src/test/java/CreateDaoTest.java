@@ -13,7 +13,7 @@ import java.util.Calendar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+//вообще по идее это надо запихать в один метод под общую транзакцию
 public class CreateDaoTest {
     UserEntity userOwner;
     TaskEntity taskEntity;
@@ -43,18 +43,18 @@ public class CreateDaoTest {
         for (i = 0; i < 3; i++) {
             stepEntity.setName("step test" + i);
             stepEntity.setDescription("hello step");
-            File file = new File("resources/JustFoIT.jpg");
+            File file = new File("resources/JustDoIT.jpg");
             try {
                 stepEntity.setProofPhoto(Files.readAllBytes(file.toPath()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            long date = Calendar.getInstance().getTimeInMillis();
+            long timeInMillis = Calendar.getInstance().getTimeInMillis();
             long randomLong=Math.round((1+Math.random())*259200000*5);
-            stepEntity.setDtStarted(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
-            stepEntity.setDeadline(new java.sql.Date(date ));
-            stepEntity.setDtFinished(new java.sql.Date(date + randomLong/2));
+            stepEntity.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
+            stepEntity.setDeadline(new Date(timeInMillis ));
+            stepEntity.setDtFinished(new Date(timeInMillis + randomLong/2));
             stepEntity.setTaskEntity(taskEntity);
 
         }
@@ -90,6 +90,7 @@ public class CreateDaoTest {
         assignmentEntity.setUserId(userMentor.getId());
         assignmentEntity.setTaskId(taskEntity.getId());
         assignmentEntity.setRoleEntity(roleMentor);
+        assignmentEntity.setEmailNotification(true);
         assertTrue(new Factory().getInstance().getRoleDao().create(assignmentEntity));
     }
 
