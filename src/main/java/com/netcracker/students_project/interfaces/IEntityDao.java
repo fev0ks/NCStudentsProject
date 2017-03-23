@@ -1,8 +1,9 @@
 package com.netcracker.students_project.interfaces;
 
-import com.netcracker.students_project.dao.RoleDao;
+import com.netcracker.students_project.dao.StepDao;
 import com.netcracker.students_project.dao.TaskDao;
 import com.netcracker.students_project.dao.UserDao;
+import com.netcracker.students_project.entity.*;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
 
 import java.util.List;
@@ -12,25 +13,24 @@ import java.util.List;
  */
 public class IEntityDao {
 
-    // dao with inheritance from IDao
-    interface IUserEntityDao extends IDao<UserDao> {
+    interface IUserDao extends IDao<UserDao> {
         List<UserDao> findAllUsers() throws ExceptionDao;
-    }
-    interface ITaskEntityDao extends IDao<TaskDao> {
-        List<UserDao> findAllTasks() throws ExceptionDao;
-    }
-    interface IRoleEntityDao extends IDao<RoleDao> {
-        List<RoleDao> findAllOwners() throws ExceptionDao;
-        List<RoleDao> findAllMentors() throws ExceptionDao;
+        List<TaskEntity>  findAllTask() throws ExceptionDao;
+        List<TaskEntity>  findAllFinishedTask() throws ExceptionDao;
+        List<TaskEntity>  findAllMentorTask() throws ExceptionDao;
+        List<CommentsTaskEntity>  findAllComment() throws ExceptionDao;
     }
 
+    interface ITaskDao extends IDao<TaskDao> {
+        List<UserEntity> findAllMentor() throws ExceptionDao;
+        List<StepEntity> findAllStep() throws ExceptionDao;
+        List<CommentsTaskEntity> findAllComment() throws ExceptionDao;
+        List<TegEntity> findAllTeg() throws ExceptionDao;
+    }
 
-//    // dao without inheritance from IDao
-//    interface IEntityBDao {
-//
-//        // find entity by name and user id
-//        EntityB get(String name, String userId) throws DaoException;
-//
-//        List<EntityB> findAll() throws DaoException;
-//    }
+    interface IStepsDao extends IDao<StepDao>{
+        List<UserEntity> findAllCheckedMentor() throws ExceptionDao;
+        List<UserEntity> findAllUnCheckedMentor() throws ExceptionDao;
+        StepDao findNearestDeadline() throws ExceptionDao;
+    }
 }
