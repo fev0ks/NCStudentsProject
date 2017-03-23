@@ -1,5 +1,6 @@
 import com.netcracker.students_project.dao.Factory;
 import com.netcracker.students_project.entity.*;
+import com.netcracker.students_project.entity.exception.ExceptionDao;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public class CreateDaoTest {
 
     @Test
     public void createUserOwner(){
+
         userOwner  =  new UserEntity();
         userOwner.setId(1);
         userOwner.setEmail("test@gmail.com");
@@ -31,7 +33,14 @@ public class CreateDaoTest {
         userOwner.setDtRegistration(new Date(1111,11,11));
         userOwner.setVkId(1);
         userOwner.setVkToken("1");
-        assertTrue(new Factory().getInstance().getUserDao().create(userOwner));
+        boolean compile=true;
+        try {
+           new Factory().getInstance().getUserDao().create(userOwner);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test
@@ -41,7 +50,14 @@ public class CreateDaoTest {
         taskEntity.setDtCreated(new Date(Calendar.getInstance().getTimeInMillis()));
         taskEntity.setDescription("Hello Test CreateTask");
         taskEntity.setName("test name task");
-        assertTrue(new Factory().getInstance().getTaskDao().create(taskEntity));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getTaskDao().create(taskEntity);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test
@@ -49,24 +65,39 @@ public class CreateDaoTest {
         roleOwner = new RoleEntity();
         roleOwner.setId(1);
         roleOwner.setName("owner");
-        assertTrue(new Factory().getInstance().getRoleDao().create(roleOwner));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getRoleDao().create(roleOwner);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test
     public void createAssignmentFirst(){
-        AssignmentEntity assignmentEntityFirst=new AssignmentEntity();
-        assignmentEntityFirst.setUserId(userOwner.getId());
-        assignmentEntityFirst.setTaskId(taskEntity.getId());
-        assignmentEntityFirst.setRoleEntity(roleOwner);
-        assignmentEntityFirst.setEmailNotification(true);
-        assertTrue(new Factory().getInstance().getRoleDao().create(assignmentEntityFirst));
+        AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
+        assignmentEntityOwner.setUserId(userOwner.getId());
+        assignmentEntityOwner.setTaskId(taskEntity.getId());
+        assignmentEntityOwner.setRoleEntity(roleOwner);
+        assignmentEntityOwner.setEmailNotification(true);
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getAssignmentDao().create(assignmentEntityOwner);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test
     public void createSteps() {
-        StepEntity stepEntity = new StepEntity();
+
         int i;
         for (i = 0; i < 3; i++) {
+            StepEntity stepEntity = new StepEntity();
             stepEntity.setName("step test" + i);
             stepEntity.setDescription("hello step");
             File file = new File("resources/JustDoIT.jpg");
@@ -82,6 +113,14 @@ public class CreateDaoTest {
             stepEntity.setDeadline(new Date(timeInMillis ));
             stepEntity.setDtFinished(new Date(timeInMillis + randomLong/2));
             stepEntity.setTaskEntity(taskEntity);
+            boolean compile=true;
+            try {
+                new Factory().getInstance().getStepDao().create(stepEntity);
+            } catch (ExceptionDao exceptionDao) {
+                exceptionDao.printStackTrace();
+                compile=false;
+            }
+            assertTrue(compile);
         }
         assertEquals(i,2);
     }
@@ -89,14 +128,28 @@ public class CreateDaoTest {
     public void createTeg(){
         tegEntity =new TegEntity();
         tegEntity.setText("testTeg");
-        assertTrue(new Factory().getInstance().getTegDao().create(tegEntity));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getTegDao().create(tegEntity);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
     @Test
     public void createTaskTeg(){
         TaskTegEntity taskTegEntity=new TaskTegEntity();
         taskTegEntity.setTaskEntity(taskEntity);
         taskTegEntity.setTegEntity(tegEntity);
-        assertTrue(new Factory().getInstance().getTaskTegsDao().create(taskTegEntity));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getTaskTegsDao().create(taskTegEntity);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
     @Test
     public void createUserMentor(){
@@ -107,14 +160,28 @@ public class CreateDaoTest {
         userMentor.setDtRegistration(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         userMentor.setVkId(2);
         userMentor.setVkToken("2");
-        assertTrue(new Factory().getInstance().getUserDao().create(userOwner));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getUserDao().create(userMentor);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
     @Test
     public void createRoleMentor(){
         roleMentor = new RoleEntity();
         roleMentor.setId(2);
         roleMentor.setName("mentor");
-        assertTrue(new Factory().getInstance().getRoleDao().create(roleMentor));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getRoleDao().create(roleMentor);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test
@@ -124,7 +191,14 @@ public class CreateDaoTest {
         assignmentEntity.setTaskId(taskEntity.getId());
         assignmentEntity.setRoleEntity(roleMentor);
         assignmentEntity.setEmailNotification(true);
-        assertTrue(new Factory().getInstance().getRoleDao().create(assignmentEntity));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getAssignmentDao().create(assignmentEntity);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 
     @Test void createSubbmission(){
@@ -133,7 +207,14 @@ public class CreateDaoTest {
         submissionEntity.setResult(true);
         submissionEntity.setUserEntity(userMentor);
         submissionEntity.setStepkEntity(new StepEntity());
-        assertTrue(new Factory().getInstance().getRoleDao().create(submissionEntity));
+        boolean compile=true;
+        try {
+            new Factory().getInstance().getSubmissionDao().create(submissionEntity);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+            compile=false;
+        }
+        assertTrue(compile);
     }
 }
 
