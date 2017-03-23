@@ -9,12 +9,27 @@ import javax.persistence.*;
 public class TaskTegEntity {
     private long taskId;
     private int tegId;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TaskEntity taskEntity;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TegEntity tegEntity;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="task_id", referencedColumnName="id")
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="task_id", referencedColumnName="id")
+    public TegEntity getTegEntity() {
+        return tegEntity;
+    }
+
+    public void setTegEntity(TegEntity tegEntity) {
+        this.tegEntity = tegEntity;
+    }
 
     @Id
     @Column(name = "task_id")

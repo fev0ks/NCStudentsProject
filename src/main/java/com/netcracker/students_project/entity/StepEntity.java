@@ -16,9 +16,17 @@ public class StepEntity {
     private Date dtFinished;
     private Date dtStarted;
     private byte[] proofPhoto;
+    private TaskEntity taskEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    public TaskEntity taskEntity;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="task_id", referencedColumnName="id")
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
 
     @ManyToMany
     public Set<SubmissionEntity> submissionEntity;

@@ -10,9 +10,6 @@ public class AssignmentEntity {
     private long userId;
     private long taskId;
     private Boolean emailNotification;
-
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private RoleEntity roleEntity;
 
     @Id
@@ -45,6 +42,16 @@ public class AssignmentEntity {
         this.emailNotification = emailNotification;
     }
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="role_id", referencedColumnName="id")
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,7 +73,7 @@ public class AssignmentEntity {
                 "userId=" + userId +
                 ", taskId=" + taskId +
                 ", emailNotification=" + emailNotification +
-                ", roleName=" + roleEntity.getName() +
+                //", roleName=" + roleEntity.getName() +
                 '}';
     }
 

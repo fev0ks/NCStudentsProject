@@ -8,12 +8,29 @@ import javax.persistence.*;
 public class SubmissionEntity {
     private long id;
     private Boolean result;
+    private UserEntity userEntity;
+    private StepEntity stepEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, targetEntity = StepEntity.class)
-    @JoinTable(name = "step", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-    public StepEntity stepEntity;
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    public UserEntity userEntity;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="mentor_id", referencedColumnName="id")
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="step_id", referencedColumnName="id")
+    public StepEntity getStepEntity() {
+        return stepEntity;
+    }
+
+    public void setStepEntity(StepEntity stepEntity) {
+        this.stepEntity = stepEntity;
+    }
+
     @Id
     @Column(name = "id")
     public long getId() {
