@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @Table(name = "user_tb", schema = "netcracker", catalog = "nc_student_project")
 public class UserEntity {
@@ -15,6 +17,7 @@ public class UserEntity {
     private String vkToken;
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;

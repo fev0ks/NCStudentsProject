@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "step", schema = "netcracker", catalog = "nc_student_project")
@@ -17,6 +19,7 @@ public class StepEntity {
     private byte[] proofPhoto;
     private TaskEntity taskEntity;
 
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="task_id", referencedColumnName="id")
     public TaskEntity getTaskEntity() {
@@ -27,7 +30,12 @@ public class StepEntity {
         this.taskEntity = taskEntity;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e649f0522eb4b6b31fa5173614a4b7d36fb8529b
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;

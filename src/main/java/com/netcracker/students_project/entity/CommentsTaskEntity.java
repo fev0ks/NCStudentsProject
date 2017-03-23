@@ -3,6 +3,8 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @Table(name = "comments_task", schema = "netcracker", catalog = "nc_student_project")
 public class CommentsTaskEntity {
@@ -12,13 +14,31 @@ public class CommentsTaskEntity {
     private long task_id;
     private long user_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private UserEntity userEntity;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private TaskEntity taskEntity;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinTable(name = "user_id", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinTable(name = "task_id", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;

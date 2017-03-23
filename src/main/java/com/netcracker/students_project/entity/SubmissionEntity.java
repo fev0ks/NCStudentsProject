@@ -2,6 +2,8 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "submission", schema = "netcracker", catalog = "nc_student_project")
@@ -31,7 +33,9 @@ public class SubmissionEntity {
         this.stepEntity = stepEntity;
     }
 
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     public long getId() {
         return id;
