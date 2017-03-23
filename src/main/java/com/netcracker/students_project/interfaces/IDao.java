@@ -9,5 +9,4 @@ public interface IDao<T> {
         T create(T entity) throws ExceptionDao;
         void update(T entity) throws ExceptionDao;
         void delete(long id) throws ExceptionDao;
-        String toString(T entity);
 }

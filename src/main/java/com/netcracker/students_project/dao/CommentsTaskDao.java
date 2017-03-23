@@ -1,4 +1,6 @@
 package com.netcracker.students_project.dao;
 
-public class CommentsTaskDao {
+import com.netcracker.students_project.entity.CommentsTaskEntity;
+
+public class CommentsTaskDao extends GenericDao<CommentsTaskEntity> {
 }

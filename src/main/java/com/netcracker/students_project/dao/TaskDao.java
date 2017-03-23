@@ -6,29 +6,10 @@ import com.netcracker.students_project.interfaces.iEntityDao.ITaskDao;
 
 import java.util.List;
 
-public class TaskDao implements ITaskDao {
-    @Override
-    public void get(TaskDao entity) throws ExceptionDao {
-        
-    }
+public class TaskDao extends GenericDao<TaskEntity> implements ITaskDao {
 
     @Override
-    public TaskDao create(TaskDao entity) throws ExceptionDao {
-        return null;
-    }
-
-    @Override
-    public void update(TaskDao entity) throws ExceptionDao {
-
-    }
-
-    @Override
-    public void delete(TaskDao entity) throws ExceptionDao {
-
-    }
-
-    @Override
-    public String toString(TaskDao entity) {
+    public String toString(TaskEntity entity) {
         return null;
     }
 
