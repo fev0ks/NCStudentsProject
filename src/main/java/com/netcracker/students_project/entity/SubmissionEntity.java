@@ -8,9 +8,34 @@ import javax.persistence.*;
 public class SubmissionEntity {
     private long id;
     private Boolean result;
+    private UserEntity userEntity;
+    private StepEntity stepEntity;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="mentor_id", referencedColumnName="id")
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="step_id", referencedColumnName="id")
+    public StepEntity getStepEntity() {
+        return stepEntity;
+    }
+
+    public void setStepEntity(StepEntity stepEntity) {
+        this.stepEntity = stepEntity;
+    }
+
+<<<<<<< HEAD
     public StepEntity stepEntity;
     public UserEntity userEntity;
+=======
+>>>>>>> origin/master
     @Id
     @Column(name = "id")
     public long getId() {

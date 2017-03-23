@@ -52,9 +52,7 @@ public class TestDB {
         roleOwner.setId(1);
         roleOwner.setName("owner");
         session.getTransaction().begin();
-
         session.persist(roleOwner);
-
         session.getTransaction().commit();
     }
 
@@ -64,22 +62,23 @@ public class TestDB {
         AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
         assignmentEntityOwner.setUserId(userOwner.getId());
         assignmentEntityOwner.setTaskId(taskEntity.getId());
-        //  assignmentEntityOwner.setRoleEntity(roleOwner);
+        assignmentEntityOwner.setRoleEntity(roleOwner);
         assignmentEntityOwner.setEmailNotification(true);
         session.persist(assignmentEntityOwner);
 
         session.getTransaction().commit();
     }
 
-
+    StepEntity[] stepEntity = new StepEntity[3];
     public void createSteps() {
-        StepEntity stepEntity = new StepEntity();
         int i;
         for (i = 0; i < 3; i++) {
             session.getTransaction().begin();
-            //stepEntity  = new StepEntity();
-            stepEntity.setName("step test" + i);
-            stepEntity.setDescription("hello step");
+            StepEntity steps=new StepEntity();
+            steps.setId(i);
+            steps.setName("step test" + i);
+            steps.setDescription("hello step");
+
 //            File file = new File("resources/JustDoIT.jpg");
 //            try {
 //                stepEntity.setProofPhoto(Files.readAllBytes(file.toPath()));
@@ -89,17 +88,18 @@ public class TestDB {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             long timeInMillis = Calendar.getInstance().getTimeInMillis();
             long randomLong = Math.round((1 + Math.random()) * 259200000 * 5);
-            stepEntity.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
-            stepEntity.setDeadline(new Date(timeInMillis));
-            stepEntity.setDtFinished(new Date(timeInMillis + randomLong / 2));
+            steps.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
+            steps.setDeadline(new Date(timeInMillis));
+            steps.setDtFinished(new Date(timeInMillis + randomLong / 2));
             // stepEntity.setTaskEntity(taskEntity);
-            session.persist(stepEntity);
 
+            session.persist(steps);
             session.flush();
             session.getTransaction().commit();
+            session.clear();
+            stepEntity[i]=steps;
         }
     }
-
     public void createTeg() {
         session.getTransaction().begin();
         tegEntity = new TegEntity();
@@ -148,7 +148,7 @@ public class TestDB {
         AssignmentEntity assignmentEntity = new AssignmentEntity();
         assignmentEntity.setUserId(userMentor.getId());
         assignmentEntity.setTaskId(taskEntity.getId());
-        //  assignmentEntity.setRoleEntity(roleMentor);
+        assignmentEntity.setRoleEntity(roleMentor);
         assignmentEntity.setEmailNotification(true);
 
         session.persist(assignmentEntity);
@@ -163,6 +163,7 @@ public class TestDB {
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
         submissionEntity.userEntity=userMentor;
+        submissionEntity.stepEntity=stepEntity[0];
         session.persist(submissionEntity);
         session.getTransaction().commit();
         session.getTransaction().begin();
@@ -171,6 +172,7 @@ public class TestDB {
         submissionEntity.setId(2);
         submissionEntity.setResult(true);
         submissionEntity.userEntity=userMentor;
+       submissionEntity.stepEntity=stepEntity[1];
         session.persist(submissionEntity);
         session.getTransaction().commit();
 
@@ -179,6 +181,7 @@ public class TestDB {
         submissionEntity.setId(3);
         submissionEntity.setResult(false);
         submissionEntity.userEntity=userMentor;
+       submissionEntity.stepEntity=stepEntity[2];
         session.persist(submissionEntity);
         session.getTransaction().commit();
     }

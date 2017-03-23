@@ -7,8 +7,6 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         TestDB testDB=new TestDB();
-
-
 //        try {
 //            System.out.println("ПОЛУЧЕНО"+ Factory.getInstance().getUserDao().get(1));
 //        } catch (ExceptionDao exceptionDao) {

@@ -18,10 +18,23 @@ public class StepEntity {
     private Date dtFinished;
     private Date dtStarted;
     private byte[] proofPhoto;
+    private TaskEntity taskEntity;
 
+<<<<<<< HEAD
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     //@JoinColumn
     public TaskEntity taskEntity;
+=======
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="task_id", referencedColumnName="id")
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
+>>>>>>> origin/master
 
     @ManyToMany
     @JoinTable
