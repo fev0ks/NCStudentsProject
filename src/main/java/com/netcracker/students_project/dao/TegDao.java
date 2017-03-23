@@ -7,7 +7,7 @@ import com.netcracker.students_project.interfaces.IDao;
 public class TegDao implements IDao<TegEntity>{
     @Override
     public void get(TegEntity entity) throws ExceptionDao {
-        
+
     }
 
     @Override
