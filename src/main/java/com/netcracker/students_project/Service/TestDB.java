@@ -3,6 +3,7 @@ package com.netcracker.students_project.Service;
 import com.netcracker.students_project.dao.Factory;
 import com.netcracker.students_project.entity.*;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
+import org.hibernate.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,20 +25,21 @@ public class TestDB {
     public void createUserOwner() {
 
         userOwner = new UserEntity();
-        userOwner.setId(1);
-        userOwner.setEmail("test@gmail.com");
-        userOwner.setNickname("testUser");
+        Session session = Factory.getInstance().getUserDao().session;
+
+        session.getTransaction().begin();
+        userOwner.setId(2);
+        userOwner.setEmail("test2@gmail.com");
+        userOwner.setNickname("testUser2");
         userOwner.setDtRegistration(new Date(1111, 11, 11));
-        userOwner.setVkId(1);
-        userOwner.setVkToken("1");
-        boolean compile = true;
-        try {
-            new Factory().getInstance().getUserDao().create(userOwner);
-        } catch (ExceptionDao exceptionDao) {
-            exceptionDao.printStackTrace();
-            compile = false;
-        }
+        userOwner.setVkId(2);
+        userOwner.setVkToken("2");
+        session.persist(userOwner);
+
         System.out.println(userOwner.toString());
+        session.flush();
+        session.getTransaction().commit();
+
     }
 
 
@@ -49,7 +51,7 @@ public class TestDB {
         taskEntity.setName("test name task");
 
         try {
-            new Factory().getInstance().getTaskDao().create(taskEntity);
+             Factory.getInstance().getTaskDao().create(taskEntity);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
@@ -62,7 +64,7 @@ public class TestDB {
         roleOwner.setName("owner");
 
         try {
-            new Factory().getInstance().getRoleDao().create(roleOwner);
+             Factory.getInstance().getRoleDao().create(roleOwner);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
@@ -73,11 +75,11 @@ public class TestDB {
         AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
         assignmentEntityOwner.setUserId(userOwner.getId());
         assignmentEntityOwner.setTaskId(taskEntity.getId());
-       // assignmentEntityOwner.setRoleEntity(roleOwner);
+        // assignmentEntityOwner.setRoleEntity(roleOwner);
         assignmentEntityOwner.setEmailNotification(true);
 
         try {
-            new Factory().getInstance().getAssignmentDao().create(assignmentEntityOwner);
+             Factory.getInstance().getAssignmentDao().create(assignmentEntityOwner);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
@@ -103,10 +105,10 @@ public class TestDB {
             stepEntity.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
             stepEntity.setDeadline(new Date(timeInMillis));
             stepEntity.setDtFinished(new Date(timeInMillis + randomLong / 2));
-           // stepEntity.setTaskEntity(taskEntity);
+            // stepEntity.setTaskEntity(taskEntity);
 
             try {
-                new Factory().getInstance().getStepDao().create(stepEntity);
+                 Factory.getInstance().getStepDao().create(stepEntity);
             } catch (ExceptionDao exceptionDao) {
                 exceptionDao.printStackTrace();
             }
@@ -118,7 +120,7 @@ public class TestDB {
         tegEntity.setText("testTeg");
 
         try {
-            new Factory().getInstance().getTegDao().create(tegEntity);
+             Factory.getInstance().getTegDao().create(tegEntity);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
@@ -130,7 +132,7 @@ public class TestDB {
         //taskTegEntity.setTegEntity(tegEntity);
 
         try {
-            new Factory().getInstance().getTaskTegsDao().create(taskTegEntity);
+             Factory.getInstance().getTaskTegsDao().create(taskTegEntity);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
@@ -146,7 +148,7 @@ public class TestDB {
         userMentor.setVkToken("2");
 
         try {
-            new Factory().getInstance().getUserDao().create(userMentor);
+             Factory.getInstance().getUserDao().create(userMentor);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
 
@@ -160,7 +162,7 @@ public class TestDB {
         roleMentor.setName("mentor");
 
         try {
-            new Factory().getInstance().getRoleDao().create(roleMentor);
+            Factory.getInstance().getRoleDao().create(roleMentor);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
 
@@ -172,11 +174,11 @@ public class TestDB {
         AssignmentEntity assignmentEntity = new AssignmentEntity();
         assignmentEntity.setUserId(userMentor.getId());
         assignmentEntity.setTaskId(taskEntity.getId());
-      //  assignmentEntity.setRoleEntity(roleMentor);
+        //  assignmentEntity.setRoleEntity(roleMentor);
         assignmentEntity.setEmailNotification(true);
 
         try {
-            new Factory().getInstance().getAssignmentDao().create(assignmentEntity);
+            Factory.getInstance().getAssignmentDao().create(assignmentEntity);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
 
@@ -188,10 +190,10 @@ public class TestDB {
         SubmissionEntity submissionEntity = new SubmissionEntity();
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
-     //   submissionEntity.setUserEntity(userMentor);
-      //  submissionEntity.setStepEntity(new StepEntity());
+        //   submissionEntity.setUserEntity(userMentor);
+        //  submissionEntity.setStepEntity(new StepEntity());
         try {
-            new Factory().getInstance().getSubmissionDao().create(submissionEntity);
+             Factory.getInstance().getSubmissionDao().create(submissionEntity);
         } catch (ExceptionDao exceptionDao) {
             exceptionDao.printStackTrace();
         }
