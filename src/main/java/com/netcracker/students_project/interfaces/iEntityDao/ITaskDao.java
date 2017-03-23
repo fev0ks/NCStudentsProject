@@ -10,6 +10,6 @@ public interface ITaskDao{
     List<StepEntity> findAllStep() throws ExceptionDao;
     List<CommentsTaskEntity> findAllComment() throws ExceptionDao;
     List<TegEntity> findAllTeg() throws ExceptionDao;
-    String toString(TaskEntity entity);
+
 }
 

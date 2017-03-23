@@ -96,6 +96,19 @@ public class StepEntity {
         this.proofPhoto = proofPhoto;
     }
 
+    @Override
+    public String toString() {
+        return "StepEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", deadline=" + deadline +
+                ", dtFinished=" + dtFinished +
+                ", dtStarted=" + dtStarted +
+                ", there is a proofPhoto=" + (!Arrays.toString(proofPhoto).isEmpty()) +
+                ", task_id=" + taskEntity.getId() +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {

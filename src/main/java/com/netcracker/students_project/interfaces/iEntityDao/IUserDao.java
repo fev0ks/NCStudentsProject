@@ -14,5 +14,5 @@ public interface IUserDao {
     List<TaskEntity>  findAllFinishedTask() throws ExceptionDao;
     List<TaskEntity>  findAllMentorTask() throws ExceptionDao;
     List<CommentsTaskEntity>  findAllComment() throws ExceptionDao;
-    String toString(UserEntity entity);
+
 }

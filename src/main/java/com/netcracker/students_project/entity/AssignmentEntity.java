@@ -69,6 +69,16 @@ public class AssignmentEntity {
     }
 
     @Override
+    public String toString() {
+        return "AssignmentEntity{" +
+                "userId=" + userId +
+                ", taskId=" + taskId +
+                ", emailNotification=" + emailNotification +
+                ", roleName=" + roleEntity.getName() +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = (int) (userId ^ (userId >>> 32));
         result = 31 * result + (int) (taskId ^ (taskId >>> 32));
