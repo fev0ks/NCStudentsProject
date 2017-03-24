@@ -1,5 +1,8 @@
 package com.netcracker.students_project.entity;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +13,7 @@ public class TegEntity {
 
     @Id
     @Column(name = "id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Generated(GenerationTime.INSERT)
     public int getId() {
         return id;
     }
