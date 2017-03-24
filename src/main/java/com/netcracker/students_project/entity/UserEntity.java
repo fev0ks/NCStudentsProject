@@ -2,9 +2,7 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "user_tb", schema = "netcracker", catalog = "nc_student_project")
@@ -17,7 +15,8 @@ public class UserEntity {
     private String vkToken;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @SequenceGenerator(name="user_id_seq", sequenceName="user_sequence", allocationSize=1)
     @Column(name = "id")
     public long getId() {
         return id;
@@ -77,13 +76,13 @@ public class UserEntity {
         this.vkToken = vkToken;
     }
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<AssignmentEntity> userAssignmentList;
-
-    @OneToMany
-    @JoinColumn(name = "mentor_id")
-    private List<SubmissionEntity>  submissionEntityList;
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    private List<AssignmentEntity> userAssignmentList;
+//
+//    @OneToMany
+//    @JoinColumn(name = "mentor_id")
+//    private List<SubmissionEntity>  submissionEntityList;
 
     @Override
     public String toString() {

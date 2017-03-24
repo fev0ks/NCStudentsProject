@@ -2,8 +2,6 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Table(name = "role", schema = "netcracker", catalog = "nc_student_project")
 public class RoleEntity {
@@ -11,7 +9,8 @@ public class RoleEntity {
     private String name;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @SequenceGenerator(name="role_id_seq", sequenceName="role_sequence", allocationSize=1)
     @Column(name = "id")
     public int getId() {
         return id;

@@ -12,16 +12,16 @@ public class Main {
 //        } catch (ExceptionDao exceptionDao) {
 //            exceptionDao.printStackTrace();
 //        }
-        testDB.createUserOwner();
-        testDB.createTask();
-        testDB.createRoleOwner();
-        testDB.createAssignmentFirst();
-        testDB.createSteps();
+//        testDB.createUserOwner();
+//        testDB.createTask();
+//        testDB.createRoleOwner();
+//        testDB.createAssignmentFirst();
+//        testDB.createSteps();
         testDB.createTeg();
-        testDB.createTaskTeg();
-        testDB.createUserMentor();
-        testDB.createRoleMentor();
-        testDB.createAssignmentMentor();
-        testDB.createSubbmission();
+//        testDB.createTaskTeg();
+//        testDB.createUserMentor();
+//        testDB.createRoleMentor();
+//        testDB.createAssignmentMentor();
+//        testDB.createSubbmission();
     }
 }

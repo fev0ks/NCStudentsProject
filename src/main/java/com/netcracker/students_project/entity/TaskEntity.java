@@ -4,8 +4,6 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 
 @Entity
 @Table(name = "task", schema = "netcracker", catalog = "nc_student_project")
@@ -14,13 +12,23 @@ public class TaskEntity {
     private String name;
     private String description;
     private Date dtCreated;
+    private Set<StepEntity> stepsSet;
 
     @OneToMany
     @OrderBy("id")
-    private Set<StepEntity> stepsSet;
+    public Set<StepEntity> getStepsSet() {
+        return stepsSet;
+    }
+
+    public void setStepsSet(Set<StepEntity> stepsSet) {
+        this.stepsSet = stepsSet;
+    }
+
+
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @SequenceGenerator(name="task_id_seq", sequenceName="task_sequence", allocationSize=1)
     @Column(name = "id")
     public long getId() {
         return id;
@@ -82,7 +90,7 @@ public class TaskEntity {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", dtCreated=" + dtCreated +
-                ", count steps=" + stepsSet.size() +
+               // ", count steps=" + stepsSet.size() +
                 '}';
     }
 

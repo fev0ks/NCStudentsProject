@@ -11,27 +11,27 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class TaskTegEntity {
     private long taskId;
     private int tegId;
-    private TaskEntity taskEntity;
-    private TegEntity tegEntity;
+//    private TaskEntity taskEntity;
+//    private TegEntity tegEntity;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="task_id", referencedColumnName="id")
-    public TaskEntity getTaskEntity() {
-        return taskEntity;
-    }
-
-    public void setTaskEntity(TaskEntity taskEntity) {
-        this.taskEntity = taskEntity;
-    }
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="task_id", referencedColumnName="id")
-    public TegEntity getTegEntity() {
-        return tegEntity;
-    }
-
-    public void setTegEntity(TegEntity tegEntity) {
-        this.tegEntity = tegEntity;
-    }
+//    @ManyToOne(fetch=FetchType.LAZY)
+//    @JoinColumn(name="task_id", referencedColumnName="id")
+//    public TaskEntity getTaskEntity() {
+//        return taskEntity;
+//    }
+//
+//    public void setTaskEntity(TaskEntity taskEntity) {
+//        this.taskEntity = taskEntity;
+//    }
+//    @ManyToOne(fetch=FetchType.LAZY)
+//    @JoinColumn(name="task_id", referencedColumnName="id")
+//    public TegEntity getTegEntity() {
+//        return tegEntity;
+//    }
+//
+//    public void setTegEntity(TegEntity tegEntity) {
+//        this.tegEntity = tegEntity;
+//    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -73,8 +73,8 @@ public class TaskTegEntity {
         return "TaskTegEntity{" +
                 "taskId=" + taskId +
                 ", tegId=" + tegId +
-                ", task_id=" + taskEntity.getId() +
-                ", teg_text=" + tegEntity.getText() +
+             //   ", task_id=" + taskEntity.getId() +
+             //   ", teg_text=" + tegEntity.getText() +
                 '}';
     }
 

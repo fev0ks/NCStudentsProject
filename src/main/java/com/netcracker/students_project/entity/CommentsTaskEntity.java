@@ -11,8 +11,6 @@ public class CommentsTaskEntity {
     private long id;
     private String text;
     private Date dtCreated;
-    private long task_id;
-    private long user_id;
     private UserEntity userEntity;
     private TaskEntity taskEntity;
 
@@ -65,25 +63,6 @@ public class CommentsTaskEntity {
 
     public void setDtCreated(Date dtCreated) {
         this.dtCreated = dtCreated;
-    }
-
-    @Basic
-    @Column(name = "task_id")
-    public long getTask_id() {
-        return task_id;
-    }
-
-    public void setTask_id(long task_id) {
-        this.task_id = task_id;
-    }
-    @Basic
-    @Column(name = "user_id")
-    public long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
     }
 
     @Override

@@ -2,8 +2,6 @@ package com.netcracker.students_project.entity;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Table(name = "teg", schema = "netcracker", catalog = "nc_student_project")
 public class TegEntity {
@@ -11,8 +9,8 @@ public class TegEntity {
     private String text;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
