@@ -2,7 +2,7 @@ package com.netcracker.students_project.dao;
 
 import com.netcracker.students_project.entity.*;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
-import com.netcracker.students_project.interfaces.iEntityDao.ITaskDao;
+import com.netcracker.students_project.dao.interfaces.iEntityDao.ITaskDao;
 
 import java.util.List;
 

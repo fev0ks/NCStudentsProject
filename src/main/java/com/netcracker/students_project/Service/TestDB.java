@@ -1,8 +1,10 @@
 package com.netcracker.students_project.service;
 
 import com.netcracker.students_project.dao.Factory;
+import com.netcracker.students_project.dataBase.HibernateUtil;
 import com.netcracker.students_project.entity.*;
 import org.hibernate.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.text.DateFormat;
@@ -18,19 +20,21 @@ public class TestDB {
     private RoleEntity roleMentor;
     Session session = Factory.getInstance().getUserDao().session;
 
+  @Transactional
     public void createUserOwner() {
+    session=HibernateUtil.getSessionFactory().openSession();
 
         userOwner = new UserEntity();
-        session.getTransaction().begin();
+       // session.getTransaction().begin();
         //userOwner.setId(1);
-        userOwner.setEmail("test6@gmail.com");
+        userOwner.setEmail("tests26q@gmail.com");
         userOwner.setNickname("testUs52");
         userOwner.setDtRegistration(new Date(1111, 11, 11));
         userOwner.setVkId(1);
         userOwner.setVkToken("1");
         session.persist(userOwner);
-        session.flush();
-        session.getTransaction().commit();
+       session.flush();
+//        session.getTransaction().commit();
     }
 
     public void createTask() {
@@ -56,7 +60,7 @@ public class TestDB {
         session.getTransaction().commit();
     }
 
-
+@Transactional
     public void createAssignmentFirst() {
         session.getTransaction().begin();
         AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
@@ -104,7 +108,7 @@ public class TestDB {
         session.getTransaction().begin();
         tegEntity = new TegEntity();
         tegEntity.setText("testTeg");
-        session.save(tegEntity);
+        session.persist(tegEntity);
         session.getTransaction().commit();
     }
 

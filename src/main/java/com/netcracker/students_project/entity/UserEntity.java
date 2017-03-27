@@ -3,7 +3,6 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-
 @Entity
 @Table(name = "user_tb", schema = "netcracker", catalog = "nc_student_project")
 public class UserEntity {

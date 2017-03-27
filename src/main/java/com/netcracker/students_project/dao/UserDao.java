@@ -1,13 +1,14 @@
 package com.netcracker.students_project.dao;
 
+import com.netcracker.students_project.dao.interfaces.iEntityDao.IUserDao;
 import com.netcracker.students_project.entity.CommentsTaskEntity;
 import com.netcracker.students_project.entity.TaskEntity;
 import com.netcracker.students_project.entity.UserEntity;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
-import com.netcracker.students_project.interfaces.iEntityDao.IUserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class UserDao extends GenericDao<UserEntity> implements IUserDao{
