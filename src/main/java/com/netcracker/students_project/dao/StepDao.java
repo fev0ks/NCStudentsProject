@@ -1,7 +1,5 @@
 package com.netcracker.students_project.dao;
 
-import com.netcracker.students_project.entity.StepEntity;
-import com.netcracker.students_project.entity.UserEntity;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
 import com.netcracker.students_project.interfaces.iEntityDao.IStepDao;
 

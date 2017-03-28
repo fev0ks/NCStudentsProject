@@ -1,8 +1,5 @@
 package com.netcracker.students_project.dao;
 
-import com.netcracker.students_project.entity.CommentsTaskEntity;
-import com.netcracker.students_project.entity.TaskEntity;
-import com.netcracker.students_project.entity.UserEntity;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
 import com.netcracker.students_project.interfaces.iEntityDao.IUserDao;
 import org.slf4j.Logger;
