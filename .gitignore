@@ -63,3 +63,5 @@ $RECYCLE.BIN/
 *.lnk
 
 .idea
+target/classes/hibernate.cfg.xml
+*.xml

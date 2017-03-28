@@ -1,0 +1,68 @@
+package com.netcracker.students_project.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "assignment", schema = "public", catalog = "nc_stud_proj")
+public class Assignment{
+
+    private long id;
+    private String role;
+    private boolean emailNotification;
+
+    private User user;
+    private Task task;
+
+    public Assignment(){
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Column(name = "role")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+    @Column(name = "email_notification")
+    public boolean getEmailNotification() {
+        return emailNotification;
+    }
+
+    public void setEmailNotification(boolean emailNotification) {
+        this.emailNotification = emailNotification;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "task_id")
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+}
