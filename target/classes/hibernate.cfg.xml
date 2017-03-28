@@ -3,23 +3,20 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost:5433/nc_student_project</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5433/nc_stud_proj</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">root</property>
-        <mapping class="com.netcracker.students_project.entity.AssignmentEntity"/>
-        <mapping class="com.netcracker.students_project.entity.CommentsTaskEntity"/>
-        <mapping class="com.netcracker.students_project.entity.RoleEntity"/>
-        <mapping class="com.netcracker.students_project.entity.SubmissionEntity"/>
-        <mapping class="com.netcracker.students_project.entity.TaskEntity"/>
-        <mapping class="com.netcracker.students_project.entity.TaskTegEntity"/>
-        <mapping class="com.netcracker.students_project.entity.TegEntity"/>
-        <mapping class="com.netcracker.students_project.entity.UserEntity"/>
-        <mapping class="com.netcracker.students_project.entity.StepEntity"/>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="show_sql">true</property>
+        <!--<mapping class="ru.studentProject.model.entity.Task"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.User"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.Tag"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.Step"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.Assignment"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.CommentTask"/>-->
+        <!--<mapping class="ru.studentProject.model.entity.Submission"/>-->
     </session-factory>
 </hibernate-configuration>
-
