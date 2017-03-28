@@ -10,17 +10,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class TestDB {
-    private UserEntity userOwner;
-    private TaskEntity taskEntity;
-    private TegEntity tegEntity;
-    private UserEntity userMentor;
-    private RoleEntity roleOwner;
-    private RoleEntity roleMentor;
+    private User userOwner;
+    private Task task;
+    private Tag teg;
+    private User userMentor;
+//    private Role roleOwner;
+//    private Role roleMentor;
     Session session = Factory.getInstance().getUserDao().session;
 
     public void createUserOwner() {
 
-        userOwner = new UserEntity();
+        userOwner = new User();
         session.getTransaction().begin();
         //userOwner.setId(1);
         userOwner.setEmail("test6@gmail.com");
@@ -35,46 +35,46 @@ public class TestDB {
 
     public void createTask() {
         Session session = Factory.getInstance().getTaskDao().session;
-        taskEntity = new TaskEntity();
+        task = new Task();
         session.getTransaction().begin();
-       // taskEntity.setId(1);
-        taskEntity.setDtCreated(new Date(Calendar.getInstance().getTimeInMillis()));
-        taskEntity.setDescription("Hello Test CreateTask");
-        taskEntity.setName("test name task");
-        session.persist(taskEntity);
+       // task.setId(1);
+        task.setDtCreated(new Date(Calendar.getInstance().getTimeInMillis()));
+        task.setDescription("Hello Test CreateTask");
+        task.setName("test name task");
+        session.persist(task);
         session.flush();
         session.getTransaction().commit();
     }
 
 
-    public void createRoleOwner() {
-        roleOwner = new RoleEntity();
-
-        roleOwner.setName("owner");
-        session.getTransaction().begin();
-        session.persist(roleOwner);
-        session.getTransaction().commit();
-    }
+//    public void createRoleOwner() {
+//        roleOwner = new RoleE();
+//
+//        roleOwner.setName("owner");
+//        session.getTransaction().begin();
+//        session.persist(roleOwner);
+//        session.getTransaction().commit();
+//    }
 
 
     public void createAssignmentFirst() {
         session.getTransaction().begin();
-        AssignmentEntity assignmentEntityOwner = new AssignmentEntity();
-        assignmentEntityOwner.setUserId(userOwner.getId());
-        assignmentEntityOwner.setRoleEntity(roleOwner);
-        assignmentEntityOwner.setTaskId(taskEntity.getId());
+        Assignment assignmentEntityOwner = new Assignment();
+        assignmentEntityOwner.setUser(userOwner);
+        assignmentEntityOwner.setRole("owner");
+        assignmentEntityOwner.setTask(task);
         assignmentEntityOwner.setEmailNotification(true);
         session.persist(assignmentEntityOwner);
 
         session.getTransaction().commit();
     }
 
-    StepEntity[] stepEntity = new StepEntity[3];
+    Step[] stepEntity = new Step[3];
     public void createSteps() {
         int i;
         for (i = 0; i < 3; i++) {
             session.getTransaction().begin();
-            StepEntity steps=new StepEntity();
+            Step steps=new Step();
             steps.setId(i);
             steps.setName("step test" + i);
             steps.setDescription("hello step");
@@ -88,10 +88,10 @@ public class TestDB {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             long timeInMillis = Calendar.getInstance().getTimeInMillis();
             long randomLong = Math.round((1 + Math.random()) * 259200000 * 5);
-            steps.setDtStarted(new Date(Calendar.getInstance().getTimeInMillis()));
+            steps.setDt_started(new Date(Calendar.getInstance().getTimeInMillis()));
             steps.setDeadline(new Date(timeInMillis));
-            steps.setDtFinished(new Date(timeInMillis + randomLong / 2));
-            steps.setTaskEntity(taskEntity);
+            steps.setDt_finished(new Date(timeInMillis + randomLong / 2));
+            steps.setTask(task);
 
             session.persist(steps);
             session.flush();
@@ -102,25 +102,25 @@ public class TestDB {
     }
     public void createTeg() {
         session.getTransaction().begin();
-        tegEntity = new TegEntity();
-        tegEntity.setText("testTeg");
-        session.save(tegEntity);
+        teg = new Tag();
+        teg.setText("testTeg");
+        session.save(teg);
         session.getTransaction().commit();
     }
 
-    public void createTaskTeg() {
-        session.getTransaction().begin();
-        TaskTegEntity taskTegEntity = new TaskTegEntity();
-        taskTegEntity.setTaskId(taskEntity.getId());
-        taskTegEntity.setTegId(tegEntity.getId());
-        session.persist(taskTegEntity);
-
-        session.getTransaction().commit();
-    }
+//    public void createTaskTeg() {
+//        session.getTransaction().begin();
+//        TaskTag taskTegEntity = new TaskTegEntity();
+//        taskTegEntity.setTaskId(task.getId());
+//        taskTegEntity.setTegId(teg.getId());
+//        session.persist(taskTegEntity);
+//
+//        session.getTransaction().commit();
+//    }
 
     public void createUserMentor() {
         session.getTransaction().begin();
-        userMentor = new UserEntity();
+        userMentor = new User();
         userMentor.setEmail("mentor@gmail.com");
         userMentor.setNickname("testMentor");
         userMentor.setDtRegistration(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
@@ -130,21 +130,21 @@ public class TestDB {
         session.getTransaction().commit();
     }
 
-    public void createRoleMentor() {
-        session.getTransaction().begin();
-        roleMentor = new RoleEntity();
-        roleMentor.setId(2);
-        roleMentor.setName("mentor");
-        session.persist(roleMentor);
-        session.getTransaction().commit();
-    }
+//    public void createRoleMentor() {
+//        session.getTransaction().begin();
+//        roleMentor = new RoleEntity();
+//        roleMentor.setId(2);
+//        roleMentor.setName("mentor");
+//        session.persist(roleMentor);
+//        session.getTransaction().commit();
+//    }
 
     public void createAssignmentMentor() {
         session.getTransaction().begin();
-        AssignmentEntity assignmentEntity = new AssignmentEntity();
-        assignmentEntity.setUserId(userMentor.getId());
-        assignmentEntity.setTaskId(taskEntity.getId());
-        assignmentEntity.setRoleEntity(roleMentor);
+        Assignment assignmentEntity = new Assignment();
+        assignmentEntity.setUser(userMentor);
+        assignmentEntity.setTask(task);
+        assignmentEntity.setRole("mentor");
         assignmentEntity.setEmailNotification(true);
         session.persist(assignmentEntity);
         session.getTransaction().commit();
@@ -152,29 +152,29 @@ public class TestDB {
 
   public void createSubbmission() {
         session.getTransaction().begin();
-        SubmissionEntity submissionEntity = new SubmissionEntity();
+        Submission submissionEntity = new Submission();
         submissionEntity.setId(1);
         submissionEntity.setResult(true);
-        submissionEntity.setUserEntity(userMentor);
-        submissionEntity.setStepEntity(stepEntity[0]);
-        session.persist(submissionEntity);
-        session.getTransaction().commit();
-        session.getTransaction().begin();
-
-        submissionEntity = new SubmissionEntity();
-        submissionEntity.setId(2);
-        submissionEntity.setResult(true);
-        submissionEntity.setUserEntity(userMentor);
-        submissionEntity.setStepEntity(stepEntity[1]);
+        submissionEntity.setMentor(userMentor);
+        submissionEntity.setStep(stepEntity[0]);
         session.persist(submissionEntity);
         session.getTransaction().commit();
 
         session.getTransaction().begin();
-        submissionEntity = new SubmissionEntity();
-        submissionEntity.setId(3);
-        submissionEntity.setResult(false);
-        submissionEntity.setUserEntity(userMentor);
-        submissionEntity.setStepEntity(stepEntity[2]);
+      submissionEntity = new Submission();
+     // submissionEntity.setId(1);
+      submissionEntity.setResult(true);
+      submissionEntity.setMentor(userMentor);
+      submissionEntity.setStep(stepEntity[1]);
+        session.persist(submissionEntity);
+        session.getTransaction().commit();
+
+        session.getTransaction().begin();
+      submissionEntity = new Submission();
+     // submissionEntity.setId(1);
+      submissionEntity.setResult(true);
+      submissionEntity.setMentor(userMentor);
+      submissionEntity.setStep(stepEntity[2]);
         session.persist(submissionEntity);
         session.getTransaction().commit();
     }

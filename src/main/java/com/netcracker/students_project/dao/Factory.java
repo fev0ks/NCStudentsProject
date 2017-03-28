@@ -4,12 +4,12 @@ package com.netcracker.students_project.dao;
  public  class Factory {
     private static AssignmentDao assignmentDao = null;
     private static CommentsTaskDao commentsTaskEntityDao = null;
-    private static RoleDao roleDao = null;
+    //private static RoleDao roleDao = null;
     private static StepDao stepDao = null;
     private static SubmissionDao submissionDao = null;
     private static TaskDao taskEntityDao = null;
     private static TaskTegDao taskTegsEntityDao = null;
-    private static TegDao tegEntityDao = null;
+    private static TagDao tegEntityDao = null;
     private static UserDao userEntityDao = null;
 
     private static Factory instance;
@@ -38,13 +38,12 @@ package com.netcracker.students_project.dao;
 
     }
 
-    public RoleDao getRoleDao() {
-        if (roleDao == null) {
-            roleDao = new RoleDao();
-        }
-        return roleDao;
-
-    }
+//    public RoleDao getRoleDao() {
+//        if (roleDao == null) {
+//            roleDao = new RoleDao();
+//        }
+//        return roleDao;
+//    }
 
     public StepDao getStepDao() {
         if (stepDao == null) {
@@ -74,9 +73,9 @@ package com.netcracker.students_project.dao;
         return taskTegsEntityDao;
     }
 
-    public TegDao getTegDao() {
+    public TagDao getTegDao() {
         if (tegEntityDao == null) {
-            tegEntityDao = new TegDao();
+            tegEntityDao = new TagDao();
         }
         return tegEntityDao;
     }

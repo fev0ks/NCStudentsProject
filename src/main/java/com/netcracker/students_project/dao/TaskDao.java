@@ -6,26 +6,26 @@ import com.netcracker.students_project.interfaces.iEntityDao.ITaskDao;
 
 import java.util.List;
 
-public class TaskDao extends GenericDao<TaskEntity> implements ITaskDao {
+public class TaskDao extends GenericDao<Task> implements ITaskDao {
 
 
     @Override
-    public List<UserEntity> findAllMentor() throws ExceptionDao {
+    public List<User> findAllMentor() throws ExceptionDao {
         return null;
     }
 
     @Override
-    public List<StepEntity> findAllStep() throws ExceptionDao {
+    public List<Step> findAllStep() throws ExceptionDao {
         return null;
     }
 
     @Override
-    public List<CommentsTaskEntity> findAllComment() throws ExceptionDao {
+    public List<CommentTask> findAllComment() throws ExceptionDao {
         return null;
     }
 
     @Override
-    public List<TegEntity> findAllTeg() throws ExceptionDao {
+    public List<Tag> findAllTeg() throws ExceptionDao {
         return null;
     }
 }

@@ -6,9 +6,9 @@ import com.netcracker.students_project.entity.exception.ExceptionDao;
 import java.util.List;
 
 public interface ITaskDao{
-    List<UserEntity> findAllMentor() throws ExceptionDao;
-    List<StepEntity> findAllStep() throws ExceptionDao;
-    List<CommentsTaskEntity> findAllComment() throws ExceptionDao;
-    List<TegEntity> findAllTeg() throws ExceptionDao;
+    List<User> findAllMentor() throws ExceptionDao;
+    List<Step> findAllStep() throws ExceptionDao;
+    List<CommentTask> findAllComment() throws ExceptionDao;
+    List<Tag> findAllTeg() throws ExceptionDao;
 }
 
