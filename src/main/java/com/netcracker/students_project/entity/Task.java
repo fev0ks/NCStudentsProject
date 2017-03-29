@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "task", schema = "public", catalog = "nc_stud_proj")
+@Table(name = "task", schema = "public", catalog = "nc_students_project")
 public class Task {
 
     private long id;
@@ -67,9 +67,9 @@ public class Task {
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "tasks_tags",
+    @JoinTable(name = "task_tag",
             joinColumns = {@JoinColumn(name="task_id")},
-            inverseJoinColumns = {@JoinColumn(name = "teg_id")})
+            inverseJoinColumns = {@JoinColumn(name = "tag_id")})
     public Set<Tag> getTags() {
         return tags;
     }
@@ -94,5 +94,17 @@ public class Task {
 
     public void setAssignments(Set<Assignment> assignments) {
         this.assignments = assignments;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", dtCreated=" + dtCreated +
+                ", steps=" + steps +
+                ", tags=" + tags +
+                '}';
     }
 }

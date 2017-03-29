@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_tb", schema = "public", catalog = "nc_stud_proj", uniqueConstraints = {
+@Table(name = "user_tb", schema = "public", catalog = "nc_students_project", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email"),
         @UniqueConstraint(columnNames = "nickname"),
         @UniqueConstraint(columnNames = "vk_id"),
@@ -107,4 +107,15 @@ public class User {
         this.submissions = submissions;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", dtRegistration=" + dtRegistration +
+                ", vkId=" + vkId +
+                ", vkToken='" + vkToken + '\'' +
+                '}';
+    }
 }

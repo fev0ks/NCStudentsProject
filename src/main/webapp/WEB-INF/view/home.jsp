@@ -7,6 +7,7 @@
 <body>
 <h2>Home page</h2>
 <table>
+    <form:form>
     <tr>
         <td>Name:</td>
         <td>${text}</td>
@@ -15,6 +16,7 @@
         <td>Random:</td>
         <td>${rand}</td>
     </tr>
+    </form:form>
     <%--<tr>--%>
         <%--<td>ID:</td>--%>
         <%--<td>${userEntity.id}</td>--%>

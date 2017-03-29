@@ -8,7 +8,7 @@ import java.util.Set;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name = "tag", schema = "public", catalog = "nc_stud_proj")
+@Table(name = "tag", schema = "public", catalog = "nc_students_project")
 public class Tag {
 
     private long id;

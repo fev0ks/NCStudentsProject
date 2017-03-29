@@ -3,7 +3,7 @@ package com.netcracker.students_project.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "assignment", schema = "public", catalog = "nc_stud_proj")
+@Table(name = "assignment", schema = "public", catalog = "nc_students_project")
 public class Assignment{
 
     private long id;

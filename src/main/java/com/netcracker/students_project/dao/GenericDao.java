@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType;
 
 public class GenericDao<T> implements IDao<T>{
 
-    public Session session= HibernateUtil.getSession();
+    public Session session= new HibernateUtil().getSession();
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sf){

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "step", schema = "public", catalog = "nc_stud_proj")
+@Table(name = "step", schema = "public", catalog = "nc_students_project")
 public class Step {
 
     private long id;

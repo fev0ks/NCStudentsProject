@@ -3,10 +3,12 @@
 <head>
     <title>Spring MVC Form Handling</title>
 </head>
-
+<% session.getAttribute()%>
 <body>
-<h2>CREATE TASK ${task}</h2>
+
 <h2> ${user}</h2>
+<form:form  action="createTask">
+<h2>CREATE TASK ${task}</h2>
 <table>
     <tr>
         <td>Name Task</td>
@@ -22,7 +24,7 @@
     <td>id</td>
     <td><${task.id}</td>
     </tr>
-    <form:form  action="createTask">
+
         <tr>
             <td colspan="1">
                 <input type="submit" value="save"/>
