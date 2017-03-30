@@ -3,6 +3,7 @@ package com.netcracker.students_project.controller;
 
 import com.netcracker.students_project.entity.Task;
 import com.netcracker.students_project.entity.User;
+import com.netcracker.students_project.service.StartVK;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,10 +20,10 @@ import java.util.Date;
 @Controller
 public class StudentController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String start(@ModelAttribute("mvc-dispatcher") ModelMap model) {
+    public ModelAndView start(@ModelAttribute("mvc-dispatcher") ModelMap model) {
         model.addAttribute("text", "Hello user!!!");
 
-        return "start";
+        return new ModelAndView("start","command",model);
     }
 
     @RequestMapping(value = "/profile")
@@ -54,11 +56,18 @@ public class StudentController {
         //  return new ModelAndView("createTask", "command",model);
     }
 
-    @RequestMapping(value = "/goHome", method = RequestMethod.POST)
-    public String homePage(@ModelAttribute("mvc-dispatcher") ModelMap model) {
+    @RequestMapping(value = "/goHome", method = RequestMethod.GET)
+    public String homePage(HttpServletRequest request, ModelMap model) {
+
+        String code = request.getParameter("code");
+        model.addAttribute("code", code);
         model.addAttribute("rand", Math.round(Math.random() * 100000));
-        String code= (String) model.get("code");
-        System.out.println("*********************/n" +code +"/n***********************************************************");
+        StartVK startVK=new StartVK();
+        model.addAttribute("user_vk_info",startVK.startVkApi(code).toString());
+       // model.addAttribute("text", model.get("code"));
+
+         //return new ModelAndView("home", "command",modelMap);
+       // return new ModelAndView("home", "command",model);
         return "home";
     }
 

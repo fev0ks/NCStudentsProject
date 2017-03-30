@@ -1,5 +1,6 @@
 com\netcracker\students_project\service\StartVK.class
 com\netcracker\students_project\dao\ListenersDao.class
+com\netcracker\students_project\entity\Vk\VkUser.class
 com\netcracker\students_project\dao\TaskTegDao.class
 com\netcracker\students_project\entity\Tag.class
 com\netcracker\students_project\entity\Assignment.class

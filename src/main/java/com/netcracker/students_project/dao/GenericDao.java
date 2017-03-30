@@ -4,19 +4,15 @@ import com.netcracker.students_project.dataBase.HibernateUtil;
 import com.netcracker.students_project.entity.exception.ExceptionDao;
 import com.netcracker.students_project.interfaces.IDao;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.ParameterizedType;
 
 
-public class GenericDao<T> implements IDao<T>{
-
-    public Session session= new HibernateUtil().getSession();
-    private SessionFactory sessionFactory;
-
-    public void setSessionFactory(SessionFactory sf){
-        this.sessionFactory = sf;
-    }
+public class GenericDao<T> implements IDao<T> {
+    @Autowired
+    HibernateUtil hibernateUtil;
+    public Session session = hibernateUtil.getSessionFactory().getCurrentSession();
 
     @Override
     public T get(long id) throws ExceptionDao {
@@ -34,7 +30,7 @@ public class GenericDao<T> implements IDao<T>{
 
     @Override
     public void update(T entity) throws ExceptionDao {
-       // this.session.update(entity);
+        // this.session.update(entity);
     }
 
     @Override

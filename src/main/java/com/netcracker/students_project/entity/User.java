@@ -24,6 +24,15 @@ public class User {
     private Set<CommentTask> comments = new HashSet<CommentTask>();
     private Set<Submission> submissions = new HashSet<Submission>();
 
+    public User(String nickname, long vkId, String vkToken) {
+        this.nickname = nickname;
+        this.vkId = vkId;
+        this.vkToken = vkToken;
+    }
+
+    public User() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
