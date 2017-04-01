@@ -11,7 +11,7 @@
 <form:form action="/goHome" method="post">
     <td>${text}</td>
     <tr>
-        <a href="https://oauth.vk.com/authorize?client_id=5950277&display=page&redirect_uri=http://localhost:8080/goHome&scope=friends&response_type=code&v=5.63"
+        <a href="https://oauth.vk.com/authorize?client_id=5950277&display=page&redirect_uri=http://localhost:8081/goHome&scope=friends&response_type=code&v=5.63"
            title="VK">VK</a>
     </tr>
     <tr>

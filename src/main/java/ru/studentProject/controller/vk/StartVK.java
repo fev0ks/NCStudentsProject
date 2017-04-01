@@ -26,7 +26,7 @@ public class StartVK {
         System.out.println("\n" + code + "\n");
         try {
             authResponse = vk.oauth()
-                    .userAuthorizationCodeFlow(5950277, "hzFYcQ1s5iYXogqTmzWz", "http://localhost:8080/goHome", code)
+                    .userAuthorizationCodeFlow(5950277, "hzFYcQ1s5iYXogqTmzWz", "http://localhost:8081/goHome", code)
                     .execute();
         } catch (ApiException e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package ru.studentProject.dao;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.studentProject.dao.interfaces.UserDao;
@@ -10,7 +11,6 @@ import ru.studentProject.exception.ExceptionDao;
 import ru.studentProject.model.Task;
 import ru.studentProject.model.User;
 
-import javax.persistence.Query;
 import java.util.List;
 import java.util.Set;
 
@@ -56,13 +56,17 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findUserOnVKid(long vk_id) {
-        Query query = (Query) getCurrectSession().createQuery("from User where vkId=:vkIdCurrentUser");
-        query.setParameter("vkIdCurrentUser", vk_id);
-        List<User> list = query.getResultList();
-        if (list != null && !list.isEmpty())
-            return list.get(0);
-        else
-            return null;
+        Criteria userCriteria = getCurrectSession().createCriteria(User.class);
+        userCriteria.add(Restrictions.eq("vkId", vk_id));
+        return (User) userCriteria.uniqueResult();
+
+//        Query query = getCurrectSession().createQuery("from User where vkId=:vkIdCurrentUser");
+//        query.setParameter("vkIdCurrentUser", vk_id);
+//        List<User> list = query.getResultList();
+//        if (list != null && !list.isEmpty())
+//            return list.get(0);
+//        else
+//            return null;
     }
 
     public Set<Task> findAllTask(long id) throws ExceptionDao {

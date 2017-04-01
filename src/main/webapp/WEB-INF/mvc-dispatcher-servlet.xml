@@ -28,9 +28,9 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5433/nc_stud_proj"/>
+        <property name="url" value="jdbc:postgresql://localhost:5433/nc_students_project"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="6551427V"/>
+        <property name="password" value="root"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
