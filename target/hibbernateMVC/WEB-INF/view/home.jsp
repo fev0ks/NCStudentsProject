@@ -41,10 +41,11 @@
             </td>
         </tr>
     </form:form>
-    <form:form action="notice">
+    <form:form action="goHome" method="get">
         <tr>
             <td colspan="5">
-                <input type="submit" value="notice" />
+                <input type="text" name="code1">
+                <input type="submit" value="goHome" />
             </td>
         </tr>
     </form:form>

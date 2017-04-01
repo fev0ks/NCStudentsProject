@@ -1,0 +1,11 @@
+insert into nc_stud_proj.public.task (description, dt_created, name) values ('stsa', '2017-03-28', 'stas');
+insert into nc_stud_proj.public.task (description, dt_created, name) values ('st3', '2017-03-28', 'st3');
+insert into nc_stud_proj.public.task (description, dt_created, name) values ('st4', '2017-03-28', 'st4');
+insert into nc_stud_proj.public.task (description, dt_created, name) values ('st5', '2017-03-28', 'st5');
+insert into nc_stud_proj.public.assignment (id,email_notification, user_id, task_id) values (25, true, 9, 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt5', 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt6', 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt7', 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt8', 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt9', 63);
+insert into nc_stud_proj.public.step (deadline, description, dt_finished, dt_started, name, task_id) values ('2017-03-28', 'qww', '2017-03-28','2017-03-28', 'stt10', 63);

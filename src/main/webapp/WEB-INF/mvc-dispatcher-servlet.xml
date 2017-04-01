@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:tx="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.netcracker.students_project" />
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <context:component-scan base-package="ru.studentProject.controller"/>
+    <context:annotation-config/>
+    <tx:annotation-driven/>
+    <mvc:annotation-driven/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -17,40 +25,40 @@
             <value>.jsp</value>
         </property>
     </bean>
-    <tx:annotation-config> transaction-manager="transactionManager"</tx:annotation-config>
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5433/nc_student_project"/>
+        <property name="url" value="jdbc:postgresql://localhost:5433/nc_stud_proj"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="root"/>
+        <property name="password" value="6551427V"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.netcracker.students_project.entity"/>
+        <property name="packagesToScan" value="ru.studentProject.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
             </props>
         </property>
     </bean>
 
-
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="sessionFactory" ref="sessionFactory"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-
-    <bean id="hibernateUtil" class="com.netcracker.students_project.dataBase.HibernateUtil">
+    <bean id="hibernateUtil" class="ru.studentProject.controller.HibernateUtil">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="userDao" class="ru.studentProject.dao.UserDaoImpl"/>
+    <bean id="userService" class="ru.studentProject.service.UserServiceImpl"/>
 </beans>
