@@ -40,4 +40,16 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+    @Override
+    public User get(long id) {
+        User user=null;
+        try {
+            user= userDao.get(id);
+        } catch (ExceptionDao exceptionDao) {
+            exceptionDao.printStackTrace();
+        }
+        System.out.println("\n"+user+"\n");
+        return user;
+    }
 }

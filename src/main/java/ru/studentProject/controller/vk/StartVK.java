@@ -26,13 +26,14 @@ public class StartVK {
         System.out.println("\n" + code + "\n");
         try {
             authResponse = vk.oauth()
-                    .userAuthorizationCodeFlow(5950277, "hzFYcQ1s5iYXogqTmzWz", "http://localhost:8081/goHome", code)
+                    .userAuthorizationCodeFlow(5950277, "hzFYcQ1s5iYXogqTmzWz", "http://localhost:8081/autoTransfer", code)
                     .execute();
         } catch (ApiException e) {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
         }
+        System.out.println("\n" + code + "\n");
         assert authResponse != null;
         UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());
         List<UserXtrCounters> users = null;

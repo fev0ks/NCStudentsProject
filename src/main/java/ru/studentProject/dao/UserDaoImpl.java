@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User get(long id) throws ExceptionDao {
-        return null;
+        return (User) getCurrectSession().load(User.class,id);
     }
 
     @Override

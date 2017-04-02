@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,21 +66,37 @@ public class ControllerMain {
         return "main";
     }
 
-    @RequestMapping(value = "/goHome", method = RequestMethod.GET)
-    public String homePage(HttpServletRequest request, ModelMap model) throws ExceptionDao {
-        String code = request.getParameter("code");
-        model.addAttribute("code", code);
-        User user=userService.getOrGiveUser(code);
+    @RequestMapping(value = "/goHome/{user_id}", method = RequestMethod.GET)
+    public String homePage(@PathVariable("user_id") long user_id, ModelMap model) throws ExceptionDao {
+//        String code = request.getParameter("code");
+//        model.addAttribute("code", code);
+        //User user=userService.getOrGiveUser(code);
+        User user=userService.get(user_id);
         model.addAttribute("user_vk_info", user.toString());
       //  user.setEmail("dmitry.parshikov28@gmail.com");
        // userService.create(a);
         return "home";
     }
-
+//    @RequestMapping (value = "goal/{goal_link}")  //ПРИМЕР как надо тоскать id пользователя, чтоб выкачивать его из бд!11!!
+//    public String getGoal (@PathVariable("goal_link") String goal_link,
+//                           ModelMap model) {
+//        Goals goal = goalService.getGoalsByLink(goal_link);
+//        model.addAttribute("goal_name", goal.getName());
+//        model.addAttribute("goal_description", goal.getDescription());
+//        return "goal";
+//    }
     @RequestMapping(value = "/notice")//, method = RequestMethod.GET)
     public String notice(@ModelAttribute("mvc-dispatcher") ModelMap model) {
 
         return "notification";
+    }
+    @RequestMapping(value = "/autoTransfer",method = RequestMethod.GET)//, method = RequestMethod.GET)
+    public String autoTransferToHomeFromStart(HttpServletRequest request, ModelMap model) {
+        String code = request.getParameter("code");
+        model.addAttribute("code", code);
+        User user=userService.getOrGiveUser(code);
+        model.addAttribute("user_id", user.getId());
+        return "autoTransfer";
     }
 
     @RequestMapping(value = "/viewTask")//, method = RequestMethod.GET)
